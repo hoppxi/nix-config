@@ -3,9 +3,10 @@
 {
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
     ];
 

@@ -3,7 +3,7 @@
 {
   networking = {
     networkmanager.enable = true;
-    useDHCP = true;
+    useDHCP = false;
     firewall.enable = true;
   };
 }
