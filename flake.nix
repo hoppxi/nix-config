@@ -1,5 +1,5 @@
 {
-  description = "Hoppix Modular and Flake-Powered NixOS Config";
+  description = "Modular and Flake-Powered NixOS Config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,7 +14,7 @@
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
     let
       system = "x86_64-linux";
-      username = "hoppix";
+      username = "hoppxi";
       hostname = "nixos";
 
       pkgs = import nixpkgs {
