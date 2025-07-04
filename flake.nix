@@ -14,36 +14,40 @@
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
     let
       system = "x86_64-linux";
+      username = "hoppix";
+      hostname = "nixos";
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
-          inherit inputs pkgs;
-          username = "hoppix";
-          hostname = "nixos";
+          inherit inputs username hostname;
         };
 
         modules = [
           ./hosts/default.nix
           home-manager.nixosModules.home-manager
-
           {
+            nixpkgs.config.allowUnfree = true;
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
           }
         ];
       };
 
-      homeConfigurations.hoppix = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
           ./profile/home.nix
         ];
+        extraSpecialArgs = {
+          inherit inputs username hostname;
+        };
       };
 
       packages.${system}.default = pkgs.hello;

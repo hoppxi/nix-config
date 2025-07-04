@@ -9,7 +9,8 @@
     ../modules/home/packages.nix
     ../modules/home/rofi
     ../modules/home/mako.nix
-    ../modules/home/shell
+    ../modules/home/shell/zsh.nix
+    ../modules/home/shell/starship.nix
     ../modules/home/nvim
     ../modules/home/vscode.nix
     ../modules/home/hyprland

@@ -6,11 +6,11 @@
 
     theme = {
       name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
+      package = (pkgs.catppuccin-gtk.override {
         accents = [ "lavender" ];
         variant = "mocha";
         size = "compact";
-      };
+      }) {};
     };
 
     iconTheme = {
@@ -36,7 +36,10 @@
     style.name = "adwaita-dark";
   };
 
-  xdg.configFile."gtk-4.0/assets".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/assets";
-  xdg.configFile."gtk-4.0/gtk.css".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk.css";
-  xdg.configFile."gtk-4.0/gtk-dark.css".source = "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk-dark.css";
+  xdg.configFile."gtk-4.0/assets".source =
+    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/assets";
+  xdg.configFile."gtk-4.0/gtk.css".source =
+    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk.css";
+  xdg.configFile."gtk-4.0/gtk-dark.css".source =
+    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk-dark.css";
 }

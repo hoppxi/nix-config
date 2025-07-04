@@ -16,6 +16,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "kitty";
-    BROWSER = "firefox";
+    BROWSER = "brave";
   };
 }

@@ -3,7 +3,6 @@
 {
   imports = [
     ../profiles/system.nix
-    ../profiles/home.nix
   ];
 
   networking.hostName = hostname;

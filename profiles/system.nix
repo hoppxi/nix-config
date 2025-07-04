@@ -5,10 +5,12 @@
     ../modules/system/hardware-configuration.nix
 
     # Core
-    ../modules/system/locale.nix
+    ../modules/system/locales.nix
     ../modules/system/fonts.nix
     ../modules/system/networking.nix
-    ../modules/system/shells.nix
+    ../modules/system/shell.nix
+    ../modules/system/sound.nix
+    ../modules/system/bootloader.nix
 
     # Hyprland system services
     ../modules/system/hyprland/default.nix
