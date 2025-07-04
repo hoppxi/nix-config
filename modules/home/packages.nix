@@ -7,6 +7,7 @@
     just
     git
     git-filter-repo
+
     # CLI tools
     curl
     wget
@@ -33,5 +34,6 @@
 
     lm_sensors
     playerctl
+    mediainfo
   ];
 }

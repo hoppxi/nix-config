@@ -13,7 +13,7 @@
     pyright
 
     # JavaScript / TypeScript
-    nodejs
+    nodejs_20
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.prettier

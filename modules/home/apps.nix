@@ -4,8 +4,8 @@
   home.packages = with pkgs; [
     # Browsers & Communication
     brave
-    telegram-desktop
     w3m
+    telegram-desktop
 
     # Terminal & Editors
     kitty
@@ -14,19 +14,14 @@
 
     # File manager
     xfce.thunar
-
     vesktop
-    gimp
-    vlc
     qbittorrent
 
-    # Fonts
-    nerd-fonts.jetbrains-mono
-
-
     # Media & Utilities
-    mpv               # Video player
-    imv               # Image viewer
+    mpv
+    imv
+    gimp
+    vlc
 
     wf-recorder       # Wayland screen recorder
     grim              # Wayland screenshot
