@@ -1,0 +1,14 @@
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  background: #1e1e2e;
+  foreground: #cdd6f4;
+  border: 0;
+  padding: 8px;
+  spacing: 5px;
+}
+window {
+  background-color: @background;
+  border: 2px;
+  border-color: #89b4fa;
+  border-radius: 10px;
+}
