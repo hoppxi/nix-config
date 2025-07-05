@@ -26,8 +26,6 @@
     # C/C++
     gcc
     gdb
-    clang
-    clang-tools_16  # Includes clangd (LSP)
 
     # Formatters
     nixpkgs-fmt

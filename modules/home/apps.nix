@@ -9,7 +9,7 @@
 
     # Terminal & Editors
     kitty
-    neovim
+    # neovim
     vscode
 
     # File manager

@@ -35,5 +35,7 @@
     lm_sensors
     playerctl
     mediainfo
+
+    zsh-powerlevel10k
   ];
 }

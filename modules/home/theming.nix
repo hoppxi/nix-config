@@ -10,7 +10,7 @@
         accents = [ "lavender" ];
         variant = "mocha";
         size = "compact";
-      }) {};
+      });
     };
 
     iconTheme = {
@@ -25,14 +25,14 @@
 
     font = {
       name = "JetBrainsMono Nerd Font";
-      package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+      package = pkgs.nerd-fonts.jetbrains-mono;
       size = 12;
     };
   };
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style.name = "adwaita-dark";
   };
 
