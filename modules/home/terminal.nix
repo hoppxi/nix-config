@@ -4,7 +4,7 @@
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font";
-    font.size = 12;
+    font.size = 10;
     shellIntegration.enableZshIntegration = true;
 
     settings = {
