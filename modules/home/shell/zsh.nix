@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -17,6 +17,8 @@
       if [[ -r "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme" ]]; then
         source "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
       fi
+
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
   };
 }
