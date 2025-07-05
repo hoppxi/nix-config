@@ -11,6 +11,7 @@
     ../modules/system/shell.nix
     ../modules/system/sound.nix
     ../modules/system/bootloader.nix
+    ../modules/system/packages.nix
 
     # Hyprland system services
     ../modules/system/hyprland/default.nix
