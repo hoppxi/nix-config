@@ -19,6 +19,8 @@
         "editor.fontSize" = 14;
         "workbench.colorTheme" = "Default Dark+";
         "editor.formatOnSave" = true;
+        "nix.formatterPath" = "nixfmt";
+        "nix.enableLanguageServer" = true;
       };
     };
   };
