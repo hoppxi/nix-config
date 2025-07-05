@@ -7,6 +7,7 @@
     just
     git
     git-filter-repo
+    nixfmt
 
     # CLI tools
     curl
@@ -37,5 +38,14 @@
     mediainfo
 
     zsh-powerlevel10k
+
+    # qt and gtk app theme
+    gnome-themes-extra
+    papirus-icon-theme
+    bibata-cursors
+    adwaita-qt
+    catppuccin-gtk
+    
+    dconf-editor
   ];
 }
