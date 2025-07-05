@@ -7,6 +7,7 @@
   spacing: 5px;
 }
 window {
+  height: 300px;
   background-color: @background;
   border: 2px;
   border-color: #89b4fa;
