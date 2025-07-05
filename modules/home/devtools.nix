@@ -35,7 +35,6 @@
     pyright          # Python LSP
     gopls            # Go LSP
     lua-language-server
-    typescript-language-server
     vscode-langservers-extracted # HTML/CSS/JSON LSPs
 
   ];

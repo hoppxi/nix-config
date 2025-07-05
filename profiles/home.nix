@@ -2,14 +2,8 @@
 
 {
   imports = [
-    ../lib/home-modules.nix
+    ../modules/home/default.nix
   ];
-
-  home = {
-    username = username;
-    homeDirectory = "/home/${username}";
-    stateVersion = "25.11";
-  };
 
   programs.home-manager.enable = true;
 
