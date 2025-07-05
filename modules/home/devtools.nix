@@ -21,7 +21,6 @@
 
     # Go
     go
-    gopls
 
     # C/C++
     gcc
