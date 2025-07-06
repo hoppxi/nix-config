@@ -29,6 +29,7 @@
     fzf
     tmux
     cmatrix
+    pamixer
 
     upower
     libnotify
