@@ -19,8 +19,22 @@
         "editor.fontSize" = 14;
         "workbench.colorTheme" = "Default Dark+";
         "editor.formatOnSave" = true;
-        "nix.formatterPath" = "nixfmt";
         "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings" = {
+          "nil" = {
+            "diagnostics" = {
+              "ignored" = [ "unused_binding" "unused_with" ];
+            };
+            "formatting" = {
+              "command" = ["nixfmt"];
+            };
+          };
+        };
+        "[css]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "workbench.sideBar.location" = "right";
       };
     };
   };
