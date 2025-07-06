@@ -9,7 +9,7 @@
       text-color = "#cdd6f4";
       border-radius = 8;
       border-size = 2;
-      font = "JetBrainsMono Nerd Font 12";
+      font = "JetBrainsMono Nerd Font 10";
       default-timeout = 5000;
       anchor = "top-right";
       padding = "10";
