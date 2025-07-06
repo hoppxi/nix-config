@@ -1,10 +1,8 @@
+{ config, pkgs, ... }:
+
 {
-  programs.waybar.settings = [
-    {
-      "cpu" = {
-        "format" = " {usage}%";
-        "interval" = 5;
-      };
-    }
-  ];
+  cpu = {
+    format = " {usage}%";
+    interval = 5;
+  };
 }

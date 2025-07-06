@@ -10,9 +10,9 @@
     max-length = 30;
 
     rewrite = {
-      "" = "<span foreground='#89b4fa'> </span> Hyprland";
-      "~" = "  Terminal";
-      "tmux(.*)" = "<span foreground='#a6e3a1'> </span> Tmux";
+      " " = "<span foreground='#89b4fa'> </span> Hyprland";
+      " ~" = "  Terminal";
+      " tmux(.*)" = "<span foreground='#a6e3a1'> </span> Tmux";
     };
   };
 }

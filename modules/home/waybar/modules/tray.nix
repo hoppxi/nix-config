@@ -1,4 +1,4 @@
-{ config, pkgs }: 
+{ config, pkgs, ... }: 
 
 {
   tray = {
@@ -10,8 +10,8 @@
     show-hidden-items = false;
     tooltip = true;            
     gtk-layer-shell = true;
-    halign = right;
-    valign = center;
+    halign = "right";
+    valign = "center";
     background = false;
     monitored-apps = [
       "vesktop"

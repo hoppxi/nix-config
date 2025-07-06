@@ -1,12 +1,247 @@
+/* === Color Definitions === */
+@define-color base         rgba(30, 30, 46, 0.4);
+@define-color mantle       rgba(24, 24, 37, 0.4);
+@define-color crust        rgba(17, 17, 27, 0.4);
+
+@define-color text         rgb(205, 214, 244);
+@define-color subtext0     rgba(166, 173, 200, 0.4);
+@define-color subtext1     rgba(186, 194, 222, 0.4);
+
+@define-color surface0     rgba(49, 50, 68, 0.4);
+@define-color surface1     rgba(69, 71, 90, 0.4);
+@define-color surface2     rgba(88, 91, 112, 0.4);
+
+@define-color overlay0     rgba(108, 112, 134, 0.4);
+@define-color overlay1     rgba(127, 132, 156, 0.4);
+@define-color overlay2     rgba(147, 153, 178, 0.4);
+
+@define-color blue         rgba(137, 180, 250, 0.4);
+@define-color lavender     rgba(180, 190, 254, 0.4);
+@define-color lavendertint rgba(180, 190, 254, 0.1);
+@define-color sapphire     rgba(116, 199, 236, 0.4);
+@define-color sky          rgba(137, 220, 235, 0.6);
+@define-color teal         rgba(148, 226, 213, 0.4);
+@define-color green        rgba(166, 227, 161, 0.4);
+@define-color yellow       rgba(249, 226, 175, 0.4);
+@define-color peach        rgba(250, 179, 135, 0.4);
+@define-color maroon       rgba(235, 160, 172, 0.4);
+@define-color red          rgba(243, 139, 168, 0.4);
+@define-color mauve        rgba(203, 166, 247, 0.4);
+@define-color mauvedeep    rgba(203, 166, 247, 0.7);
+@define-color pink         rgba(245, 194, 231, 0.4);
+@define-color flamingo     rgba(242, 205, 205, 0.4);
+@define-color rosewater    rgba(245, 224, 220, 0.4);
+
+/* === Global Defaults === */
 * {
-  font-family: JetBrainsMono Nerd Font;
+  font-family:
+    JetBrainsMono Nerd Font,
+    monospace;
   font-size: 13px;
-  color: #cdd6f4;
-  background: #1e1e2e;
+  color: @text;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
-#clock, #battery, #cpu, #memory, #network, #workspaces {
+/* === Waybar Window === */
+window#waybar {
+  background-color: rgba(30, 30, 46, 0.4);
+  color: @text;
+}
+
+/* === Workspaces === */
+#workspaces {
+  margin: 0 8px;
+}
+
+#workspaces button {
+  padding: 0px 5px;
+  margin: 0 2px;
+  border-radius: 20px;
+  background-color: @surface0;
+  color: @subtext0;
+  border: 1px solid @surface1;
+  min-width: 24px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+  background-color: @sky;
+  color: @crust;
+  font-weight: bold;
+  min-width: 40px;
+}
+
+#workspaces button:hover {
+  background-color: @surface1;
+}
+
+#workspaces button:hover * {
+  color: @sky;
+}
+
+#workspaces button.active:hover {
+  background-color: @sapphire;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  color: @crust;
+}
+
+/* === App menu === */
+#custom-appmenu {
+  padding: 0 12px 0px 9px;
+  margin-left: 6px;
+  font-size: 20px;
+  color: @sky;
+  background-color: @surface0;
+  border-radius: 20px;
+  border: 1px solid @surface1;
+  transition: all 0.3s ease;
+}
+
+#custom-appmenu:hover {
+  background-color: @lavendertint;
+  color: @sky;
+  border-color: @sky;
+}
+
+/* === quick links === */
+#custom-browser,
+#custom-github,
+#custom-youtube,
+#custom-editor {
+  padding: 0 12px 0 6px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+#custom-browser:hover,
+#custom-github:hover,
+#custom-youtube:hover,
+#custom-editor:hover {
+  background-color: @surface1;
+  border: 1px solid @surface1;
+  color: @sky;
+}
+
+/* === window === */
+#window {
+  border-radius: 20px;
+  background-color: @surface0;
+  color: @text;
+  border: 1px solid @surface1;
+  transition: all 0.3s ease-in-out;
+  padding: 0px 10px;
+}
+
+#window:hover * {
+  color: @sky;
+}
+
+/* === mpris === */
+
+/* === quickinfo === */
+#pulseaudio,
+#network,
+#battery {
+  padding: 0px 5px;
+  margin: 0 2px;
+  border-radius: 20px;
+  background-color: @surface0;
+  color: @text;
+  border: 1px solid @surface1;
+  min-width: 24px;
+  transition: all 0.2s ease-in-out;
+}
+#pulseaudio:hover,
+#network:hover,
+#battery:hover {
+  color: @sky;
+}
+#pulseaudio {
+  border-radius: 20px 0px 0px 20px;
+  padding-left: 10px;
+  border-right: none;
+  margin-right: 0px;
+}
+#network {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+#battery {
+  border-radius: 0px 20px 20px 0px;
+  border-left: none;
+  margin-left: 0px;
+  padding-right: 10px;
+}
+
+/* === tray === */
+#tray {
   padding: 0 10px;
-  margin: 2px;
-  border-radius: 6px;
+  margin: 0 6px;
+  border-radius: 20px;
+  background-color: @surface0;
+  border: 1px solid @surface1;
+  transition: all 0.3s ease-in-out;
+}
+
+#tray > * {
+  /* margin: 0 4px; */
+  padding: 5px;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+#tray > *:hover {
+  background-color: @overlay1;
+  color: @sky;
+}
+
+#clock {
+  padding: 0px 5px;
+  margin: 0 2px;
+  border-radius: 20px;
+  background-color: @surface0;
+  color: @text;
+  border: 1px solid @surface1;
+  min-width: 24px;
+  transition: all 0.2s ease-in-out;
+  padding: 0px 10px;
+}
+
+#clock:hover {
+  color: @sky;
+}
+
+/* === power menu === */
+#custom-powermenu {
+  padding: 0 3px 0 9px;
+  font-size: 18px;
+  background-color: @surface0;
+  border-radius: 20px;
+  border: 1px solid @surface1;
+  transition: all 0.3s ease;
+}
+
+#custom-powermenu:hover {
+  color: @sky;
+}
+
+/* === tooltip === */
+tooltip {
+  background-color: @base;
+  color: @text;
+  border-radius: 10px;
+  border: 1px solid @surface1;
+  padding: 6px 10px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
 }
