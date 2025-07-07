@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
   imports = [ 
@@ -10,6 +10,7 @@
     ./input.nix 
     ./autostart.nix 
     ./hypreco.nix 
+    ./hyprlock.nix
   ];
 
   wayland.windowManager.hyprland = {
