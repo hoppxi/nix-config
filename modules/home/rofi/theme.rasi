@@ -1,15 +1,205 @@
-* {
-  font: "JetBrainsMono Nerd Font 12";
-  background: #1e1e2e;
-  foreground: #cdd6f4;
-  border: 0;
-  padding: 8px;
-  spacing: 5px;
+configuration {
+  modi: "drun,run,filebrowser,window";
+  show-icons: true;
+  display-drun: "";
+  display-run: "";
+  display-filebrowser: "";
+  display-window: "";
+  drun-display-format: "{name}";
+  window-format: "{w} · {c} · {t}";
 }
+
+* {
+  font: "JetBrains Mono Nerd Font 10";
+}
+
 window {
-  height: 300px;
-  background-color: @background;
-  border: 2px;
-  border-color: #89b4fa;
+  transparency: "real";
+  location: center;
+  anchor: center;
+  fullscreen: false;
+  width: 600px;
+  height: 305px;
+  x-offset: 0px;
+  y-offset: 0px;
+  enabled: true;
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid;
+  border-radius: 14px;
+  border-color: #3c9ec499;
+  cursor: "default";
+  background-color: rgba(30, 30, 46, 0.4);
+}
+
+mainbox {
+  enabled: true;
+  spacing: 10px;
+  padding: 30px;
+  border: 0px solid;
+  border-radius: 0px;
+  border-color: #3c9ec499;
+  background-color: transparent;
+  children: [ "inputbar", "message", "listview" ];
+}
+
+inputbar {
+  spacing: 10px;
+  border: 0px solid;
+  border-color: #3c9ec499;
+  background-color: transparent;
+  text-color: #dce7f099;
+  children: [ "textbox-prompt-colon", "entry", "mode-switcher" ];
+}
+
+prompt,
+textbox-prompt-colon,
+entry,
+num-filtered-rows,
+textbox-num-sep,
+num-rows,
+case-indicator {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+textbox-prompt-colon {
+  padding: 5px 0px;
+  expand: false;
+  str: " ";
+}
+
+entry {
+  padding: 5px 0px;
+  cursor: text;
+  placeholder: "Search...";
+  placeholder-color: inherit;
+}
+
+listview {
+  columns: 1;
+  lines: 8;
+  cycle: true;
+  dynamic: true;
+  scrollbar: true;
+  layout: vertical;
+  fixed-height: true;
+  fixed-columns: true;
+  spacing: 5px;
+  border: 0px solid;
+  border-color: #3c9ec499;
+  background-color: transparent;
+  text-color: #dce7f099;
+  cursor: "default";
+}
+
+scrollbar {
+  handle-width: 5px;
+  handle-color: #5aa1bd99;
   border-radius: 10px;
+  background-color: #2c3e5099;
+}
+
+element {
+  spacing: 10px;
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: transparent;
+  text-color: #dce7f099;
+  cursor: pointer;
+}
+
+element normal.urgent {
+  background-color: #e06c7599;
+  text-color: #1e2e3999;
+}
+element normal.active {
+  background-color:rgba(131, 142, 146, 0.43);
+  text-color:rgba(255, 255, 255, 0.6);
+  border-color: #3c9ec499;
+}
+
+element selected.normal {
+  background-color:rgba(43, 74, 86, 0.36);
+  text-color:rgba(216, 222, 226, 0.6);
+  border-color: #3c9ec499;
+}
+element selected.urgent {
+  background-color:rgba(216, 124, 124, 0.4);
+  text-color:rgba(227, 228, 228, 0.6);
+}
+element selected.active {
+  background-color:rgba(88, 118, 129, 0.43);
+  text-color:rgba(255, 255, 255, 0.6);
+  border-color: #3c9ec499;
+}
+
+element-icon {
+  background-color: transparent;
+  text-color: inherit;
+  size: 24px;
+  cursor: inherit;
+}
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+  highlight: inherit;
+  cursor: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.0;
+}
+
+mode-switcher {
+  spacing: 10px;
+  border: 0px solid;
+  border-color: #3c9ec499;
+  background-color: transparent;
+  text-color: #dce7f099;
+}
+
+button {
+  padding: 5px 10px;
+  border: 0px solid;
+  border-radius: 10px;
+  border-color: #3c9ec499;
+  background-color: #28384799;
+  text-color: inherit;
+  cursor: pointer;
+}
+button selected {
+  background-color: #3c9ec499;
+  text-color: #0f1c2599;
+}
+
+message {
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid;
+  border-radius: 0px;
+  border-color: #3c9ec499;
+  background-color: transparent;
+  text-color: #dce7f099;
+}
+
+textbox {
+  padding: 8px 10px;
+  border: 0px solid;
+  border-radius: 10px;
+  border-color: #3c9ec499;
+  background-color: #2b3f4e99;
+  text-color: #dce7f099;
+  highlight: none;
+  placeholder-color: #dce7f099;
+  blink: true;
+  markup: true;
+}
+
+error-message {
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 10px;
+  border-color: #3c9ec499;
+  background-color: #1e2e3999;
+  text-color: #dce7f099;
 }

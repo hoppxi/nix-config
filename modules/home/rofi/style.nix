@@ -1,5 +1,5 @@
 { config, ... }: 
 
 {
-  home.file."rofi/theme.rasi".source = ./theme.rasi;
+  home.file.".config/rofi/theme.rasi".source = ./theme.rasi;
 }
