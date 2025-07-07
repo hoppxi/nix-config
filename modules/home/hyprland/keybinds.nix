@@ -50,6 +50,19 @@
       # Scroll through existing workspaces with mainMod + scroll
       "SUPER, mouse_down, workspace, e+1"
       "SUPER, mouse_up, workspace, e-1"
+
+      # menu
+      "CTRL SHIFT, 1, exec, ~/.config/rofi/scripts/battery.sh"
+      "CTRL SHIFT, 2, exec, ~/.config/rofi/scripts/power.sh"
+      "CTRL SHIFT, 3, exec, ~/.config/rofi/scripts/volume.sh"
+      "CTRL SHIFT, 4, exec, ~/.config/rofi/scripts/backlight.sh"
+      "CTRL SHIFT, 5, exec, ~/.config/rofi/scripts/wifi.sh"
+      "CTRL SHIFT, 6, exec, ~/.config/rofi/scripts/calendar.sh"
+      "CTRL SHIFT, 7, exec, ~/.config/rofi/scripts/screenshot.sh"
+      "CTRL SHIFT, 8, exec, ~/.config/rofi/scripts/mpd.sh"
+
+      # hyprlock
+      "SUPER, L, exec, hyprlock"
     ];
 
     bindl = [
