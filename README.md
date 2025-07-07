@@ -21,7 +21,7 @@ NixOS config using flakes with Hyprland, home-manager, and a bunch of riced apps
 - [ ] write bash scripts for notifications (e.g. battery, network)
 - [ ] add keybinds needed for Hyprland
 - [ ] make it _mine_: wallpapers (Hyprpaper), colors, layout
-- [ ] waybar customization
+- [x] waybar customization
 - [ ] rofi customization (launcher, power menu, emoji, etc.)
 - [ ] neovim full rice (LSP, UI, plugins)
 - [ ] vscode tweaks (extensions, settings.json)

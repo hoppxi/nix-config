@@ -6,12 +6,25 @@
 
     format-wifi = "{icon}";
     format-ethernet = "󰈀";
-    format-disconnected = "";
+    format-disconnected = "󰖪";
     tooltip = true;
 
-    tooltip-format-wifi = "{essid}\nSignal: {signalStrength}%\nIP: {ipaddr}";
-    tooltip-format-ethernet = "Connected via Ethernet\nIP: {ipaddr}";
-    tooltip-format-disconnected = "Disconnected";
+    tooltip-format-wifi = ''
+      SSID: {essid}
+      Interface: {ifname}
+      Signal Strength: {signalStrength}%
+      IP: {ipaddr}
+    '';
+
+    tooltip-format-ethernet = ''
+      Connected via Ethernet
+      Interface: {ifname}
+      IP: {ipaddr}
+    '';
+
+    tooltip-format-disconnected = ''
+      No network connection
+    '';
 
     format-icons = {
       wifi = [

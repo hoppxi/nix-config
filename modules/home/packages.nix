@@ -7,7 +7,6 @@
     just
     git
     git-filter-repo
-    nixfmt
 
     # CLI tools
     curl

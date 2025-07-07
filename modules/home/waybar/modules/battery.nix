@@ -4,13 +4,26 @@
   battery = {
     interval = 30;
 
-    format = "{icon} {capacity}%";
+    format = "{icon}";
     format-charging = "{icon}";
     format-plugged = "{icon}";
     format-full = ""; 
     tooltip = true;
-    tooltip-format = "⚡ {capacity}%\n{time}\nState: {health}";
-
+    tooltip-format-charging = ''
+      ⚡ {capacity}%
+      Until full: {time}
+      Health: {health}
+    '';
+    tooltip-format-discharging = ''
+      ⚡ {capacity}%
+      Until empty: {time}
+      Health: {health}
+    '';
+    tooltip-format-full = ''
+      ⚡ {capacity}% (Full)
+      Health: {health}
+    '';
+    
     states = {
       "critical" = 10;
       "warning" = 25;

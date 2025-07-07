@@ -1,4 +1,4 @@
-/* === Color Definitions === */
+/* === Color Definitions (with 0.6 opacity) === */
 @define-color base         rgba(30, 30, 46, 0.4);
 @define-color mantle       rgba(24, 24, 37, 0.4);
 @define-color crust        rgba(17, 17, 27, 0.4);
@@ -20,12 +20,12 @@
 @define-color lavendertint rgba(180, 190, 254, 0.1);
 @define-color sapphire     rgba(116, 199, 236, 0.4);
 @define-color sky          rgba(137, 220, 235, 0.6);
-@define-color teal         rgba(148, 226, 213, 0.4);
-@define-color green        rgba(166, 227, 161, 0.4);
-@define-color yellow       rgba(249, 226, 175, 0.4);
+@define-color teal         rgba(148, 226, 213, 0.6);
+@define-color green        rgba(166, 227, 161, 0.9);
+@define-color yellow       rgba(249, 226, 175, 0.9);
 @define-color peach        rgba(250, 179, 135, 0.4);
 @define-color maroon       rgba(235, 160, 172, 0.4);
-@define-color red          rgba(243, 139, 168, 0.4);
+@define-color red          rgba(243, 139, 168, 0.9);
 @define-color mauve        rgba(203, 166, 247, 0.4);
 @define-color mauvedeep    rgba(203, 166, 247, 0.7);
 @define-color pink         rgba(245, 194, 231, 0.4);
@@ -40,8 +40,7 @@
   font-size: 13px;
   color: @text;
   background: transparent;
-  border: none;
-  outline: none;
+  box-shadow: none;
 }
 
 /* === Waybar Window === */
@@ -50,14 +49,25 @@ window#waybar {
   color: @text;
 }
 
+window#waybar * {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
 /* === Workspaces === */
 #workspaces {
   margin: 0 8px;
+  background-color: @lavendertint;
+  border-radius: 20px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 #workspaces button {
   padding: 0px 5px;
-  margin: 0 2px;
+  margin: 3px 2px;
   border-radius: 20px;
   background-color: @surface0;
   color: @subtext0;
@@ -92,20 +102,19 @@ window#waybar {
 
 /* === App menu === */
 #custom-appmenu {
-  padding: 0 12px 0px 9px;
+  padding: 0 13px 0px 9px;
   margin-left: 6px;
-  font-size: 20px;
+  font-size: 22px;
   color: @sky;
-  background-color: @surface0;
   border-radius: 20px;
-  border: 1px solid @surface1;
+  border: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 #custom-appmenu:hover {
   background-color: @lavendertint;
   color: @sky;
-  border-color: @sky;
+  border: 1px solid @sky;
 }
 
 /* === quick links === */
@@ -144,13 +153,18 @@ window#waybar {
 }
 
 /* === mpris === */
+#mpris {
+  margin-right: 5px;
+}
 
 /* === quickinfo === */
 #pulseaudio,
 #network,
-#battery {
+#battery,
+#backlight {
   padding: 0px 5px;
   margin: 0 2px;
+  font-size: 15px;
   border-radius: 20px;
   background-color: @surface0;
   color: @text;
@@ -160,7 +174,8 @@ window#waybar {
 }
 #pulseaudio:hover,
 #network:hover,
-#battery:hover {
+#battery:hover,
+#backlight:hover {
   color: @sky;
 }
 #pulseaudio {
@@ -168,19 +183,36 @@ window#waybar {
   padding-left: 10px;
   border-right: none;
   margin-right: 0px;
+  padding-right: 0px;
 }
-#network {
+#network,
+#backlight {
   border-radius: 0;
   border-left: none;
   border-right: none;
   margin-left: 0px;
   margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 #battery {
   border-radius: 0px 20px 20px 0px;
   border-left: none;
   margin-left: 0px;
   padding-right: 10px;
+  padding-left: 0px;
+}
+#battery.critical {
+  color: @red;
+}
+#battery.warning {
+  color: @yellow;
+}
+#battery.charging {
+  color: @green;
+}
+#battery.charging:hover {
+  color: @teal;
 }
 
 /* === tray === */
@@ -205,6 +237,7 @@ window#waybar {
   color: @sky;
 }
 
+/* === clock === */
 #clock {
   padding: 0px 5px;
   margin: 0 2px;
@@ -232,7 +265,7 @@ window#waybar {
 }
 
 #custom-powermenu:hover {
-  color: @sky;
+  color: @red;
 }
 
 /* === tooltip === */

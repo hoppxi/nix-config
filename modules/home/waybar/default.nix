@@ -16,6 +16,7 @@ let
     ./modules/powermenu.nix
     ./modules/tray.nix
     ./modules/window.nix
+    ./modules/backlight.nix
   ];
 
   widgets = lib.foldl' (acc: modulePath:
@@ -31,7 +32,7 @@ in
         layer = "top";
         position = "top";
         mode = "dock";
-        height = 30;
+        height = 32;
         reload_style_on_change = true;
         # gtk-layer-shell = true;
         modules-left = [ 
@@ -46,6 +47,7 @@ in
           "mpris" 
           "pulseaudio" 
           "network" 
+          "backlight"
           "battery" 
           # "cpu" 
           # "memory" 
@@ -67,10 +69,7 @@ in
         "custom/powermenu" = widgets."custom/powermenu";
         "custom/appmenu" = widgets."custom/appmenu";
         "group/quicklinks" = widgets."group/quicklinks";
-        "custom/browser" = widgets."custom/browser";
-        "custom/github" = widgets."custom/github";
-        "custom/youtube" = widgets."custom/youtube";
-        "custom/editor" = widgets."custom/editor";
+        "backlight" = widgets."backlight";
       }
     ];
 

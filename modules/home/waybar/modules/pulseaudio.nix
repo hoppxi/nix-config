@@ -3,24 +3,37 @@
 {
   pulseaudio = {
     scroll-step = 1;
-    format = "{icon} {volume}%";
-    format-bluetooth = "{volume}% {icon} {format_source}";
-    format-bluetooth-muted = " {icon} {format_source}";
-    format-muted = " {format_source}";
+
+    format = "{icon}";
+    format-muted = " Muted";
+    format-bluetooth = "{icon}";
+    format-bluetooth-muted = "{icon} Muted";
     format-source = "{volume}% ";
-    format-source-muted = "";
+    format-source-muted = "  Muted";
+
     format-icons = {
+      default = [
+        ""  # 0–33%
+        ""  # 34–66%
+        ""  # 67–100%
+      ];
+
       headphone = "";
-      hands-free = "";
-      headset = "";
+      hands-free = "󰂯";
+      headset = "󰋎";
       phone = "";
       portable = "";
       car = "";
-      default = ["" " " " "];
+      computer = "";
     };
-    
+
     tooltip = true;
-    tooltip-format = "{desc}\nVolume: {volume}%";
+
+    tooltip-format = ''
+      Device: {desc}
+      Volume: {volume}%
+      Mic: {format_source}
+    '';
 
     on-click = "pavucontrol";
   };

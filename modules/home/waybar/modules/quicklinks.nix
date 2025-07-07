@@ -1,37 +1,28 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }:
 
-{
+let
+  quicklinks = {
+    browser = { icon = ""; tooltip = "Brave"; cmd = "brave"; };
+    github  = { icon = ""; tooltip = "GitHub"; cmd = "xdg-open https://github.com"; };
+    youtube = { icon = ""; tooltip = "YouTube"; cmd = "xdg-open https://youtube.com"; };
+    editor  = { icon = ""; tooltip = "VSCode"; cmd = "code"; };
+  };
+
+  makeLink = attrs: {
+    format = attrs.icon;
+    tooltip = true;
+    tooltip-format = attrs.tooltip;
+    on-click = attrs.cmd;
+  };
+
+  customWidgets = lib.mapAttrs' (name: data: {
+    name = "custom/${name}";
+    value = makeLink data;
+  }) quicklinks;
+  
+in {
   "group/quicklinks" = {
     orientation = "horizontal";
-    modules = [
-      "custom/browser"
-      "custom/github"
-      "custom/youtube"
-      "custom/editor"
-    ];
+    modules = builtins.attrNames quicklinks;
   };
-
-  "custom/browser" = {
-    format = "";
-    tooltip = "Firefox";
-    on-click = "firefox";
-  };
-
-  "custom/github" = {
-    format = "";
-    tooltip = "GitHub";
-    on-click = "xdg-open https://github.com";
-  };
-
-  "custom/youtube" = {
-    format = "";
-    tooltip = "YouTube";
-    on-click = "xdg-open https://youtube.com";
-  };
-
-  "custom/editor" = {
-    format = "";
-    tooltip = "Launch VSCode";
-    on-click = "code";
-  };
-}
+} // customWidgets
