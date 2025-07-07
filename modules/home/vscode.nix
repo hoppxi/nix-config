@@ -20,14 +20,13 @@
         "workbench.colorTheme" = "Default Dark+";
         "editor.formatOnSave" = true;
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
         "nix.serverSettings" = {
           "nil" = {
             "diagnostics" = {
               "ignored" = [ "unused_binding" "unused_with" ];
             };
             "formatting" = {
-              "command" = ["nixfmt"];
+              "command" = ["nixfmt-rfc-style"];
             };
           };
         };
