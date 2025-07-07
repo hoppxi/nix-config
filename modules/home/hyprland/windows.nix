@@ -49,6 +49,8 @@
       "blur, waybar"
       "blur,notifications"
       "ignorezero,notifications"
+      "blur, rofi"
+      "ignorezero, rofi"
     ];
   };
 }
