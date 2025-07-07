@@ -45,7 +45,10 @@
     bibata-cursors
     adwaita-qt
     catppuccin-gtk
-    
-    dconf-editor
+
+    mpd
+    mpc
+    brightnessctl
+    powertop
   ];
 }
