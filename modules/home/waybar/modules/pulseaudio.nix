@@ -10,6 +10,7 @@
     format-bluetooth-muted = "{icon} Muted";
     format-source = "{volume}% ";
     format-source-muted = "  Muted";
+    on-click = "~/.config/rofi/scripts/volume.sh";
 
     format-icons = {
       default = [
@@ -35,6 +36,6 @@
       Mic: {format_source}
     '';
 
-    on-click = "pavucontrol";
+    on-click-right = "pavucontrol";
   };
 }

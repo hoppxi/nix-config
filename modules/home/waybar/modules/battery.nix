@@ -8,6 +8,9 @@
     format-charging = "{icon}";
     format-plugged = "{icon}";
     format-full = ""; 
+
+    on-click = "~/.config/rofi/scripts/battery.sh";
+
     tooltip = true;
     tooltip-format-charging = ''
       ⚡ {capacity}%

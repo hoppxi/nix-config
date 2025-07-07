@@ -9,6 +9,8 @@
     format-disconnected = "󰖪";
     tooltip = true;
 
+    on-click = "~/.config/rofi/scripts/wifi.sh";
+
     tooltip-format-wifi = ''
       SSID: {essid}
       Interface: {ifname}
