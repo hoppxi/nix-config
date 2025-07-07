@@ -4,7 +4,7 @@
   "custom/appmenu" = {
     format = "󱄅";
     tooltip = true;
-    tooltip-format = "Application Menu";
+    tooltip-format = "Menu";
     on-click = "rofi -show drun -replace";
     on-click-right = "rofi -show run -replace";
     on-scroll-up = "rofi -show drun";

@@ -69,7 +69,11 @@ in
         "custom/powermenu" = widgets."custom/powermenu";
         "custom/appmenu" = widgets."custom/appmenu";
         "group/quicklinks" = widgets."group/quicklinks";
-        "backlight" = widgets."backlight";
+        "custom/browser" = widgets."custom/browser";
+        "custom/github" = widgets."custom/github";
+        "custom/youtube" = widgets."custom/youtube";
+        "custom/editor" = widgets."custom/editor";
+        "backlight" = widgets.backlight;
       }
     ];
 

@@ -156,6 +156,9 @@ window#waybar * {
 #mpris {
   margin-right: 5px;
 }
+#mpris:hover {
+  color: @sky;
+}
 
 /* === quickinfo === */
 #pulseaudio,
@@ -258,14 +261,17 @@ window#waybar * {
 #custom-powermenu {
   padding: 0 3px 0 9px;
   font-size: 18px;
-  background-color: @surface0;
+  color: @red;
   border-radius: 20px;
-  border: 1px solid @surface1;
+  border: 1px solid transparent;
   transition: all 0.3s ease;
+  margin-left: 3px;
+  margin-right: 5px;
 }
 
 #custom-powermenu:hover {
-  color: @red;
+  background-color: @surface0;
+  border: 1px solid @red;
 }
 
 /* === tooltip === */
