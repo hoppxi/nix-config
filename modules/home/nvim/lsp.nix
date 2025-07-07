@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+
+{
   home.packages = with pkgs; [
     lua-language-server
     rust-analyzer
@@ -9,7 +11,7 @@
   programs.neovim.extraConfig = ''
     lua << EOF
       require('lspconfig').pyright.setup{}
-      require('lspconfig').tsserver.setup{}
+      require('lspconfig').ts_ls.setup{}
       require('lspconfig').rust_analyzer.setup{}
       require('lspconfig').lua_ls.setup{}
     EOF
