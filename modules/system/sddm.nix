@@ -1,21 +1,18 @@
-{ config, pkgs, ... }:
+{ lib, ... }:
 
 {
-  systemd.tmpfiles.rules = [
-    "d /usr/share/sddm/themes/sugar-candy 0755 root root -"
-  ];
-
-  system.activationScripts.sddmTheme = {
-    text = ''
-      if [ ! -d /usr/share/sddm/themes/sugar-candy ]; then
-        mkdir -p /usr/share/sddm/themes/sugar-candy
-        cd /tmp
-        rm -rf sugar-candy
-        git clone --depth=1 https://github.com/Kangie/sddm-sugar-candy sugar-candy
-        cp -r sugar-candy/* /usr/share/sddm/themes/sugar-candy
-      fi
-    '';
+  services.displayManager.sddm.sugarCandyNix = {
+    enable = true;
+    settings = {
+      # Background = lib.cleanSource ~/Pictures/wall9.jpg;
+      ScreenWidth = 1366;
+      ScreenHeight = 768;
+      FormPosition = "center";
+      FullBlur = true;
+      AccentColor = "#87CEEB";
+      BackgroundColor = "#87CEEB";
+      RoundCorners = 20;
+      FontSize = "11";
+    };
   };
-
-  services.displayManager.sddm.theme = "sugar-candy";
 }
