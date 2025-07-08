@@ -4,14 +4,14 @@
 prompt="`hostname`"
 mesg="Uptime: `uptime | sed -E 's/.*up *([^,]*,[^,]*).*/\1/'`"
 
-option_1=" Lock"
-option_2=" Logout"
-option_3=" Suspend"
-option_4=" Hibernate"
-option_5=" Reboot"
-option_6=" Shutdown"
-yes=' Yes'
-no=' No'
+option_1=" Lock"
+option_2="󰍃 Logout"
+option_3=" Suspend"
+option_4="󰏦 Hibernate"
+option_5=" Reboot"
+option_6=" Shutdown"
+yes=' Yes'
+no=' No'
 
 # Rofi CMD
 rofi_cmd() {
