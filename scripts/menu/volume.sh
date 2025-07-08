@@ -2,63 +2,60 @@
 
 # Rofi menu launcher
 rofi_cmd() {
-
 	speaker=$(pamixer --get-volume)
 	speaker_muted=$(pamixer --get-mute)
-	mic_muted=$(pamixer --default-source --get-mute)
 	mic_volume=$(pamixer --default-source --get-volume)
+	mic_muted=$(pamixer --default-source --get-mute)
 
-	# Speaker toggle state
-	if [[ "$speaker_muted" == false ]]; then
-		active="-a 1"
-		stext='Unmute'
-		sicon=''
+	# Set speaker state
+	if [[ "$speaker_muted" == true ]]; then
+		speaker_text="Unmute Speaker"
+		speaker_icon=""
+		speaker_state="-u 2"
 	else
-		urgent="-u 1"
-		stext='Mute'
-		sicon=''
+		speaker_text="Mute Speaker"
+		speaker_icon=""
+		speaker_state="-a 2"
 	fi
 
-	# Mic toggle state
-	if [[ "$mic_muted" == false ]]; then
-		[[ -n "$active" ]] && active+=",3" || active="-a 3"
-		mtext='Unmute'
-		micon=''
+	# Set mic state
+	if [[ "$mic_muted" == true ]]; then
+		mic_text="Unmute Mic"
+		mic_icon=""
+		mic_state="-u 4"
 	else
-		[[ -n "$urgent" ]] && urgent+=",3" || urgent="-u 3"
-		mtext='Mute'
-		micon=''
+		mic_text="Mute Mic"
+		mic_icon=""
+		mic_state="-a 4"
 	fi
 
-	prompt="S:$stext, M:$mtext"
-	mesg="Speaker: $speaker%, Mic: $mic_volume%"
+	prompt="Volume menu"
+	message="Speaker: $speaker%, Mic: $mic_volume%"
 
-	option_1=" Increase"
-	option_2="$sicon $stext"
-	option_3=" Decrease"
-	option_4="$micon $mtext"
-	option_5=" Settings"
+	option_1="  Increase Volume"
+	option_2="$speaker_icon  $speaker_text"
+	option_3="  Decrease Volume"
+	option_4="$mic_icon  $mic_text"
+	option_5="  Launch pavucontrol"
 
 	echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi \
 		-theme-str "window {width: 400px; height: 320px;}" \
 		-theme-str "inputbar {enabled: false;}" \
 		-dmenu \
 		-p "$prompt" \
-		-mesg "$mesg" \
-		${active} ${urgent} \
-		-markup-rows 
+		-mesg "$message"
 }
 
-# Loop menu
+# Main loop
 while true; do
 	choice=$(rofi_cmd)
 
 	case "$choice" in
-		*"Increase"*) pamixer -i 5 ;;
-		*"Decrease"*) pamixer -d 5 ;;
-		*"" | *""*) pamixer -t ;;
-		*"" | *""*) pamixer --default-source -t ;;
-		*""*) pavucontrol; break ;;
+		*"Increase Volume"*) pamixer -i 5 ;;
+		*"Decrease Volume"*) pamixer -d 5 ;;
+		*"Mute Speaker"* | *"Unmute Speaker"*) pamixer -t ;;
+		*"Mute Mic"* | *"Unmute Mic"*) pamixer --default-source -t ;;
+		*"Launch pavucontrol"*) pavucontrol; break ;;
 		"" ) break ;;
 	esac
 done
