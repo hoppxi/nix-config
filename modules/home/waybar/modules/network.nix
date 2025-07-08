@@ -7,6 +7,7 @@
     format-wifi = "{icon}";
     format-ethernet = "󰈀";
     format-disconnected = "󰖪";
+    format-disabled = "󱚼";
     tooltip = true;
 
     on-click = "~/.config/rofi/scripts/wifi.sh";

@@ -21,8 +21,6 @@
     };
 
     on-click = "playerctl play-pause";
-    on-click-right = "~/.config/rofi/scripts/mpd.sh";
-    on-scroll-up = "playerctl volume 0.05+";
-    on-scroll-down = "playerctl volume 0.05-";
+    on-click-right = "~/.config/rofi/scripts/music.sh";
   };
 }
