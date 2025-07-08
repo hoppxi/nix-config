@@ -9,9 +9,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
+    
+    sddm-sugar-candy-nix.url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+    sddm-sugar-candy-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sddm-sugar-candy-nix, flake-utils, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "hoppxi";
@@ -33,6 +36,15 @@
         modules = [
           ./hosts/default.nix
           home-manager.nixosModules.home-manager
+          sddm-sugar-candy-nix.nixosModules.default
+
+          {
+            nixpkgs = {
+              overlays = [
+                sddm-sugar-candy-nix.overlays.default
+              ];
+            };
+          }
         ];
       };
 

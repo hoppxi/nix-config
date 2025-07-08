@@ -16,6 +16,9 @@
     # Hyprland system services
     ../modules/system/hyprland/default.nix
 
+    # sddm
+    ../modules/system/sddm.nix
+
     # ../modules/system/bluetooth.nix
     # ../modules/system/printing.nix
     # ../modules/system/virtualisation.nix
