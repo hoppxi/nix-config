@@ -35,6 +35,7 @@
 
     lm_sensors
     playerctl
+    pavucontrol
     mediainfo
 
     zsh-powerlevel10k
@@ -46,8 +47,7 @@
     adwaita-qt
     catppuccin-gtk
 
-    mpd
-    mpc
+    ncmpcpp
     brightnessctl
     powertop
   ];
