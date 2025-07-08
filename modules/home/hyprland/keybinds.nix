@@ -59,10 +59,13 @@
       "CTRL SHIFT, 5, exec, ~/.config/rofi/scripts/wifi.sh"
       "CTRL SHIFT, 6, exec, ~/.config/rofi/scripts/calendar.sh"
       "CTRL SHIFT, 7, exec, ~/.config/rofi/scripts/screenshot.sh"
-      "CTRL SHIFT, 8, exec, ~/.config/rofi/scripts/mpd.sh"
+      "CTRL SHIFT, 8, exec, ~/.config/rofi/scripts/music.sh"
 
       # hyprlock
       "SUPER, L, exec, hyprlock"
+
+      # screenshot and recorder
+      "CTRL, F11, exec, pkill wf-recorder"
     ];
 
     bindl = [
