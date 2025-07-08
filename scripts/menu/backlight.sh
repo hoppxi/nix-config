@@ -5,25 +5,14 @@ while true; do
 	backlight=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
 	card=$(brightnessctl -m | cut -d, -f1)
 
-	# Human-readable level
-	if [[ $backlight -lt 30 ]]; then
-		level="Low"
-	elif [[ $backlight -lt 50 ]]; then
-		level="Optimal"
-	elif [[ $backlight -lt 70 ]]; then
-		level="High"
-	else
-		level="Peak"
-	fi
-
 	# Display text
 	prompt="${backlight}%"
-	mesg="Device: ${card}, Level: $level"
+	mesg="Device: ${card}, Level: $backlight%"
 
 	# Options
-	option_1=" Increase"
-	option_2=" Optimal"
-	option_3=" Decrease"
+	option_1="  Increase"
+	option_2="  Optimal"
+	option_3="  Decrease"
 
 	# Rofi menu
 	choice=$(echo -e "$option_1\n$option_2\n$option_3" | rofi \
