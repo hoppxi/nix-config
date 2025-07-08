@@ -33,6 +33,6 @@
     "backlight"
     "calendar"
     "screenshot"
-    "mpd"
+    "music"
   ]);
 }
