@@ -32,16 +32,16 @@ in
         layer = "top";
         position = "top";
         mode = "dock";
-        height = 32;
+        height = 36;
         reload_style_on_change = true;
         # gtk-layer-shell = true;
         modules-left = [ 
           "custom/appmenu"
-          "hyprland/workspaces"
-          "group/quicklinks"  
-        ];
-        modules-center = [ 
           "hyprland/window" 
+          # "group/quicklinks"  
+        ];
+        modules-center = [
+          "hyprland/workspaces" 
         ];
         modules-right = [ 
           "mpris" 
@@ -77,6 +77,6 @@ in
       }
     ];
 
-    # style = builtins.readFile ./style.css;
+    style = builtins.readFile ./style.css;
   };
 }
