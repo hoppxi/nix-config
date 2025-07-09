@@ -24,24 +24,24 @@ fi
 
 # Determine battery icon based on percentage
 if [[ $percentage -le 19 ]]; then
-    ICON_DISCHRG=" "
+    ICON_DISCHRG=""
 elif [[ $percentage -le 39 ]]; then
-    ICON_DISCHRG=" "
+    ICON_DISCHRG=""
 elif [[ $percentage -le 59 ]]; then
-    ICON_DISCHRG=" "
+    ICON_DISCHRG=""
 elif [[ $percentage -le 79 ]]; then
-    ICON_DISCHRG=" "
+    ICON_DISCHRG=""
 else
-    ICON_DISCHRG=" "
+    ICON_DISCHRG=""
 fi
 
 # Charging icon
-ICON_CHRG=""
+ICON_CHRG="󰂄"
 
 # Rofi menu options
 option_1="$ICON_DISCHRG  Remaining: ${percentage}%"
 option_2="$ICON_CHRG  Status: ${status}"
-option_3="󱈏 Health: ${health}"
+option_3="󱈏  Health: ${health}"
 option_4="  Launch powertop"
 
 # Rofi appearance config
