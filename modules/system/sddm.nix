@@ -4,7 +4,7 @@
   services.displayManager.sddm.sugarCandyNix = {
     enable = true;
     settings = {
-      # Background = lib.cleanSource ~/Pictures/wall9.jpg;
+      Background = lib.cleanSource ../../assets/wallpapers/wallpaper2.jpg;
       ScreenWidth = 1366;
       ScreenHeight = 768;
       FormPosition = "center";
