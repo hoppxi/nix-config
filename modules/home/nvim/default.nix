@@ -1,17 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: 
 
-let
-  configDir = ./config;
-in {
-
+{
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped;
+    viAlias = true;
+    vimAlias = true;
     withNodeJs = true;
     withPython3 = true;
-    extraPackages = with pkgs; [ ripgrep fd unzip lua-language-server stylua ];
+    extraPackages = with pkgs; [ ripgrep fd ];
   };
-
-  home.file.".config/nvim".source = configDir;
-
 }

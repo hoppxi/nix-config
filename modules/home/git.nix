@@ -9,7 +9,7 @@
 
     signing = {
       key = null;
-      signByDefault = false;
+      signByDefault = true;
     };
 
     aliases = {
