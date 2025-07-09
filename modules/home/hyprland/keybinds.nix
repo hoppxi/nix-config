@@ -66,6 +66,18 @@
 
       # screenshot and recorder
       "CTRL, F11, exec, pkill wf-recorder"
+
+      # Wallpaper
+      "CTRLALT, 1, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper1.jpg'"
+      "CTRLALT, 2, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper2.jpg'"
+
+      "CTRLALT, R, exec, ~/.config/hypr/scripts/random-wallpaper.sh"
+      # Wallpaper with according workspace
+      # "SUPER, 1, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper1.jpg'"
+
+      # Update flake
+      # "SUPER SHIFT, F, exec, ~/.config/scripts/updater/flake_updater.sh"
+      # "SUPER CTRL, F, exec, ~/.config/scripts/updater/kill.sh "
     ];
 
     bindl = [
