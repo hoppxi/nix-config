@@ -23,27 +23,31 @@ case "$chosen" in
     grim "$filename"
     notify-send "Screenshot Taken" "Full screen screenshot saved to $filename"
     ;;
+
   "$option_2")
     filename="$SCREENSHOT_DIR/screenshot-$(date +%Y%m%d%H%M%S).png"
     grim -g "$(slurp)" "$filename"
     notify-send "Screenshot Taken" "Selected area screenshot saved to $filename"
     ;;
+
   "$option_3")
     filename="$SCREENSHOT_DIR/recording-$(date +%Y%m%d%H%M%S).mp4"
     wf-recorder -f "$filename" &
     recorder_pid=$!
     notify-send "Recording Started" "Recording started. Press Ctrl+F11 to stop."
+
+    # Monitor wf-recorder process
+    while kill -0 "$recorder_pid" 2>/dev/null; do
+      sleep 1
+    done
+
+    notify-send "Recording Stopped" "Recording saved to $filename"
     ;;
+
   "$option_4")
-    xdg-open "$SCREENSHOT_DIR" &
+    thunar "$SCREENSHOT_DIR" &
     ;;
+
   *)
     ;;
 esac
-
-# Monitor the wf-recorder process
-while pgrep -x "wf-recorder" > /dev/null; do
-  sleep 1
-done
-
-notify-send "Recording Stopped" "Recording saved to $filename"
