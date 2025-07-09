@@ -3,8 +3,6 @@
 {
   imports = [
     ./style.nix
-    ./wifi.nix
-    ./powermenu.nix
   ];
 
   programs.rofi = {
