@@ -2,7 +2,7 @@
 
 {
   wayland.windowManager.hyprland.settings = {
-    "exec-once" = [
+    exec-once = [
       "hyprpaper"
       "waybar"
     ];

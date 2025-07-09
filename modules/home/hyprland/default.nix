@@ -9,8 +9,9 @@
     ./monitors.nix 
     ./input.nix 
     ./autostart.nix 
-    ./hypreco.nix 
-    ./hyprlock.nix
+    ./hypreco/packages.nix 
+    ./hypreco/hyprlock.nix
+    ./hypreco/hyprpaper.nix
   ];
 
   wayland.windowManager.hyprland = {
