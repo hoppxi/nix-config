@@ -7,9 +7,9 @@ radio_state=$(nmcli radio wifi)
 connected_ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
 
 if [[ "$radio_state" == "enabled" ]]; then
-	toggle_label="Disable Wi-Fi"
+	disable_label="Disable Wi-Fi"
 else
-	toggle_label="Enable Wi-Fi"
+	disable_label="Enable Wi-Fi"
 fi
 
 disconnect_label=""
@@ -25,10 +25,10 @@ fi
 
 ### === MAIN MENU ===
 
-option_1="  Wi-Fi List\n󱛀  Manual Entry"
+option_1="  Wi-Fi List"
 option_2="󱛀  Manual Entry"
 option_3="󱚼  $disconnect_label"
-option_4="󱛅  $toggle_label"
+option_4="󱛅  $disable_label"
 option_5="󰩩  Launch nmtui"
 
 main_menu_items="$option_1\n$option_2\n$option_3\n$option_4\n$option_5"
@@ -59,28 +59,28 @@ main_choice=$(echo -e "$main_menu_items" | rofi_cmd)
 
 ### === MAIN MENU CHOICE ===
 
-if [[ "$main_choice" == "Disable Wi-Fi" ]]; then
+if [[ "$main_choice" == "󱛅  Disable Wi-Fi" ]]; then
 	nmcli radio wifi off && notify-send "Wi-Fi Disabled" "Wireless was turned off"
 	exit 0
-elif [[ "$main_choice" == "Enable Wi-Fi" ]]; then
+elif [[ "$main_choice" == "󱛅  Enable Wi-Fi" ]]; then
 	nmcli radio wifi on && notify-send "Wi-Fi Enabled" "Wireless was turned on"
 	exit 0
 fi
 
 # Disconnect
-if [[ "$main_choice" == "Disconnect Wi-Fi" ]]; then
+if [[ "$main_choice" == "󱚼  Disconnect Wi-Fi" ]]; then
 	nmcli device disconnect "$iface" && notify-send "Wi-Fi" "Disconnected from $iface"
 	exit 0
 fi
 
 # nmtui
-if [[ "$main_choice" == "Launch nmtui" ]]; then
+if [[ "$main_choice" == "󱚼  Disconnected" ]]; then
 	kitty -e nmtui 2>/dev/null || alacritty -e nmtui 2>/dev/null || foot -e nmtui
 	exit 0
 fi
 
 # Manual Entry
-if [[ "$main_choice" == "Manual Entry" ]]; then
+if [[ "$main_choice" == "$option_2" ]]; then
 	ssid=$(manual_input "Enter SSID" "SSID")
 	[ -z "$ssid" ] && notify-send "Wi-Fi" "SSID required" && exit 1
 
@@ -105,7 +105,7 @@ if [[ "$main_choice" == "Manual Entry" ]]; then
 fi
 
 # Wi-Fi List
-if [[ "$main_choice" == "Wi-Fi List" ]]; then
+if [[ "$main_choice" == "$option_1" ]]; then
 
 	nmcli device wifi rescan >/dev/null 2>&1 &
 	sleep 2
