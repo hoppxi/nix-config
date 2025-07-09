@@ -55,8 +55,9 @@ window#waybar > box {
 /* === Workspaces === */
 #workspaces {
   margin: 0 8px;
-  background-color: @lavendertint;
+  background-color: @surface0;
   border-radius: 20px;
+  border: 1px solid @surface1;
   padding-left: 3px;
   padding-right: 3px;
 }
