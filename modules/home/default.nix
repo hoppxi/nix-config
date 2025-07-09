@@ -32,4 +32,11 @@
     source = ../../scripts/updater/kill.sh;
     executable = true;
   };
+
+  
+  # Required for Nix LSP
+  programs.bash.initExtra = ''
+    export PATH="$HOME/.nix-profile/bin:$PATH"
+  '';
 }
+

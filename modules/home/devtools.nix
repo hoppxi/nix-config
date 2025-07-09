@@ -34,5 +34,7 @@
     lua-language-server
     vscode-langservers-extracted # HTML/CSS/JSON LSPs
     nixfmt-rfc-style
+
+    nil
   ];
 }

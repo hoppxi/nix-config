@@ -1,18 +1,17 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
-{
-  imports = [
-    ./options.nix
-    ./plugins.nix
-    ./lsp.nix
-  ];
+let
+  configDir = ./config;
+in {
 
   programs.neovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
+    package = pkgs.neovim-unwrapped;
     withNodeJs = true;
     withPython3 = true;
-    extraPackages = with pkgs; [ ripgrep fd ];
+    extraPackages = with pkgs; [ ripgrep fd unzip lua-language-server stylua ];
   };
+
+  home.file.".config/nvim".source = configDir;
+
 }

@@ -4,21 +4,37 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
+
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
-        ms-vscode.cpptools
+        # Formatter & Linters
         esbenp.prettier-vscode
         dbaeumer.vscode-eslint
-        rust-lang.rust-analyzer
         jnoortheen.nix-ide
         ms-python.python
+        rust-lang.rust-analyzer
+        ms-vscode.cpptools
+        ms-vscode.cmake-tools
+        llvm-vs-code-extensions.vscode-clangd
+        enkia.tokyo-night
+        pkief.material-icon-theme
       ];
 
       userSettings = {
+        # Font
         "editor.fontFamily" = "JetBrainsMono Nerd Font";
         "editor.fontSize" = 14;
-        "workbench.colorTheme" = "Default Dark+";
+
+        # Theme
+        "workbench.colorTheme" = "Tokyo Night";
+        "workbench.iconTheme" = "material-icon-theme";
+
+        # Formatter & Sidebar
         "editor.formatOnSave" = true;
+        "workbench.sideBar.location" = "right";
+        "window.menuBarVisibility" = "compact";
+
+        # Nix LSP settings
         "nix.enableLanguageServer" = true;
         "nix.serverSettings" = {
           "nil" = {
@@ -30,10 +46,17 @@
             };
           };
         };
+
+        # Per-language formatter
         "[css]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
-        "workbench.sideBar.location" = "right";
+        "[cpp]" = {
+          "editor.defaultFormatter" = "ms-vscode.cpptools";
+        };
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
       };
     };
   };
