@@ -1,12 +1,40 @@
-{ config, pkgs, ... }: 
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
+let
+  nvimScript = ../../../scripts/nvim;
+  pluginPkgs = import ./packages.nix { inherit pkgs; };
+in
 {
   programs.neovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
+    defaultEditor = true;
     withNodeJs = true;
     withPython3 = true;
-    extraPackages = with pkgs; [ ripgrep fd ];
+    withRuby = false;
+
+    extraPackages = with pkgs; [
+      lua-language-server
+      stylua
+      rust-analyzer
+      pyright
+      gopls
+      nil
+      ripgrep
+      fd
+      unzip
+    ];
+
+    plugins = pluginPkgs;
+
+    extraLuaConfig = ''
+      dofile("${nvimScript}/init.lua")
+    '';
   };
+
+  xdg.configFile."nvim/lua".source = "${nvimScript}";
 }

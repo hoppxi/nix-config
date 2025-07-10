@@ -1,10 +1,16 @@
-{ config, pkgs, lib, username, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  username,
+  ...
+}:
 
 {
   imports = [
     ./hyprland/default.nix
     ./waybar/default.nix
-    # ./nvim/default.nix
+    ./nvim/default.nix
     ./rofi/default.nix
     ./services/default.nix
     ./shell/zsh.nix
@@ -33,4 +39,3 @@
     executable = true;
   };
 }
-
