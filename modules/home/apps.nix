@@ -9,11 +9,12 @@
 
     # Terminal & Editors
     kitty
-    # neovim
+    # neovim # managed at /nvim
     vscode
 
     # File manager
     xfce.thunar
+    ranger
     vesktop
     qbittorrent
 
@@ -22,14 +23,13 @@
     imv
     gimp
     vlc
+    spotify
 
-    wf-recorder       # Wayland screen recorder
-    grim              # Wayland screenshot
-    slurp             # with selection
+    wf-recorder # Wayland screen recorder
+    grim # Wayland screenshot
+    slurp # with selection
 
-    onlyoffice-bin    # Office suite
+    onlyoffice-bin # Office suite
   ];
 
 }
-
-
