@@ -42,7 +42,7 @@
               "ignored" = [ "unused_binding" "unused_with" ];
             };
             "formatting" = {
-              "command" = ["nixfmt-rfc-style"];
+              "command" = ["nixfmt"];
             };
           };
         };
