@@ -50,21 +50,25 @@ Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, 
 
 ## Screenshots
 
-| hyprland                                 | waybar                                | mako                                |
-| ---------------------------------------- | ------------------------------------- | ----------------------------------- |
-| ![img](assets/screenshots/hyprland2.png) | ![img](assets/screenshots/waybar.png) | ![img](assets/screenshots/mako.png) |
+| hyprland                                 |                                         |
+| ---------------------------------------- | --------------------------------------- |
+| ![img](assets/screenshots/hyprland2.png) | ![img](assets/screenshots/hyprland.png) |
 
-| vscode                                | neovim                                | gtk                                | kitty                                | Launcher                                |
-| ------------------------------------- | ------------------------------------- | ---------------------------------- | ------------------------------------ | --------------------------------------- |
-| ![img](assets/screenshots/vscode.png) | ![img](assets/screenshots/neovim.png) | ![img](assets/screenshots/gtk.png) | ![img](assets/screenshots/kitty.png) | ![img](assets/screenshots/launcher.png) |
+| waybar                                |
+| ------------------------------------- |
+| ![img](assets/screenshots/waybar.png) |
 
-| Power menu                           | wifi menu                           | battery                                | backlight                                 | volume                                |
-| ------------------------------------ | ----------------------------------- | -------------------------------------- | ----------------------------------------- | ------------------------------------- |
-| ![img](assets/screenshots/power.png) | ![img](assets/screenshots/wifi.png) | ![img](assets/screenshots/battery.png) | ![img](assets/screenshots/brightness.png) | ![img](assets/screenshots/volume.png) |
+| vscode                                | neovim                                | gtk                                | kitty                                |
+| ------------------------------------- | ------------------------------------- | ---------------------------------- | ------------------------------------ |
+| ![img](assets/screenshots/vscode.png) | ![img](assets/screenshots/neovim.png) | ![img](assets/screenshots/gtk.png) | ![img](assets/screenshots/kitty.png) |
 
-| mpris                                | screenshot                                | clipboard                                |
-| ------------------------------------ | ----------------------------------------- | ---------------------------------------- |
-| ![img](assets/screenshots/mpris.png) | ![img](assets/screenshots/screenshot.png) | ![img](assets/screenshots/clipboard.png) |
+| Power menu                           | wifi menu                           | battery                                | backlight                                | volume                                |
+| ------------------------------------ | ----------------------------------- | -------------------------------------- | ---------------------------------------- | ------------------------------------- |
+| ![img](assets/screenshots/power.png) | ![img](assets/screenshots/wifi.png) | ![img](assets/screenshots/battery.png) | ![img](assets/screenshots/backlight.png) | ![img](assets/screenshots/volume.png) |
+
+| mpris                                | screenshot                                | clipboard                                | Launcher                                | mako                                |
+| ------------------------------------ | ----------------------------------------- | ---------------------------------------- | --------------------------------------- | ----------------------------------- |
+| ![img](assets/screenshots/mpris.png) | ![img](assets/screenshots/screenshot.png) | ![img](assets/screenshots/clipboard.png) | ![img](assets/screenshots/launcher.png) | ![img](assets/screenshots/mako.png) |
 
 ## Credits
 
