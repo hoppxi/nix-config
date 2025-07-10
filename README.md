@@ -1,5 +1,7 @@
 ## Sky Theme for Hyprland and Nixos
 
+> Important: currently developing eww widgets for rofi replacement
+
 A fully reproducible and modular NixOS setup using Hyprland, themed entirely in a sleek and dreamy Sky aesthetic.  
 Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, Thunar, GTK, Rofi) follows a unified sky-themed look.
 
@@ -46,23 +48,23 @@ Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, 
    home-manager switch --flake .#your-username
    ```
 
-<!--## Screenshots
+## Screenshots
 
- When done
-| Section       | Preview                                      |
-| ------------- | -------------------------------------------- |
-| Hyprland      | ![Hyprland](assets/screenshots/hyprland.png) |
-| Thunar        | ![Thunar](assets/screenshots/thunar.png)     |
-| Waybar        | ![Waybar](assets/screenshots/waybar.png)     |
-| Rofi          | ![Rofi](assets/screenshots/rofi.png)         |
-| Mako          | ![Mako](assets/screenshots/mako.png)         |
-| SDDM          | ![SDDM](assets/screenshots/sddm.png)         |
-| Kitty         | ![Kitty](assets/screenshots/kitty.png)       |
-| Neovim        | ![Neovim](assets/screenshots/nvim.png)       |
-| VSCode        | ![VSCode](assets/screenshots/vscode.png)     |
-| Brave Browser | ![Brave](assets/screenshots/brave.png)       |
-| Hyprlock      | ![Brave](assets/screenshots/brave.png)       |
--->
+| hyprland                                 | waybar                                | mako                                |
+| ---------------------------------------- | ------------------------------------- | ----------------------------------- |
+| ![img](assets/screenshots/hyprland2.png) | ![img](assets/screenshots/waybar.png) | ![img](assets/screenshots/mako.png) |
+
+| vscode                                | neovim                                | gtk                                | kitty                                | Launcher                                |
+| ------------------------------------- | ------------------------------------- | ---------------------------------- | ------------------------------------ | --------------------------------------- |
+| ![img](assets/screenshots/vscode.png) | ![img](assets/screenshots/neovim.png) | ![img](assets/screenshots/gtk.png) | ![img](assets/screenshots/kitty.png) | ![img](assets/screenshots/launcher.png) |
+
+| Power menu                           | wifi menu                           | battery                                | backlight                                 | volume                                |
+| ------------------------------------ | ----------------------------------- | -------------------------------------- | ----------------------------------------- | ------------------------------------- |
+| ![img](assets/screenshots/power.png) | ![img](assets/screenshots/wifi.png) | ![img](assets/screenshots/battery.png) | ![img](assets/screenshots/brightness.png) | ![img](assets/screenshots/volume.png) |
+
+| mpris                                | screenshot                                | clipboard                                |
+| ------------------------------------ | ----------------------------------------- | ---------------------------------------- |
+| ![img](assets/screenshots/mpris.png) | ![img](assets/screenshots/screenshot.png) | ![img](assets/screenshots/clipboard.png) |
 
 ## Credits
 
