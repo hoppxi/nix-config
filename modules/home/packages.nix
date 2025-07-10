@@ -28,6 +28,10 @@
     fzf
     tmux
     cmatrix
+    pipes
+    tty-clock
+    hollywood
+
     pamixer
 
     upower

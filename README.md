@@ -1,11 +1,13 @@
-## Sky Theme for Hyprland and Nixos
+## Nixos + hyprland on the sky
 
-> Important: currently developing eww widgets for rofi replacement
+![img](assets/screenshots/hyprland3.png)
+
+> Currently developing eww widgets for rofi replacement
 
 A fully reproducible and modular NixOS setup using Hyprland, themed entirely in a sleek and dreamy Sky aesthetic.  
-Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, Thunar, GTK, Rofi) follows a unified sky-themed look.
+Everything from system UI to applications (Neovim, VSCode, Thunar, GTK, Rofi) follows a unified sky-themed look.
 
-> Managed entirely via flakes and home-manager — no config files in `~/.config`!
+> Managed entirely via flakes and home-manager; no config files in `~/.config` just symlinks!
 
 ## Features
 
@@ -34,7 +36,7 @@ Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, 
 
 3. **Copy your `hardware-configuration.nix`**
 
-   > important: this is for my pc, so for yours you should yours.
+   > Important: this is for my pc. so for your computer, you should use yours.
 
    ```bash
    rm modules/system/hardware-configuration.nix
