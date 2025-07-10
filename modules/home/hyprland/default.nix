@@ -1,17 +1,24 @@
-{ config, lib, pkgs, username, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  username,
+  ...
+}:
 
 {
-  imports = [ 
-    ./appearance.nix 
-    ./keybinds.nix 
-    ./windows.nix 
-    ./env.nix 
-    ./monitors.nix 
-    ./input.nix 
-    ./autostart.nix 
-    ./hypreco/packages.nix 
+  imports = [
+    ./appearance.nix
+    ./keybinds.nix
+    ./windows.nix
+    ./env.nix
+    ./monitors.nix
+    ./input.nix
+    ./autostart.nix
+    ./hypreco/packages.nix
     ./hypreco/hyprlock.nix
     ./hypreco/hyprpaper.nix
+    ./hypreco/hypridle.nix
   ];
 
   wayland.windowManager.hyprland = {

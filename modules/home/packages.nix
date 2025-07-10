@@ -50,5 +50,8 @@
     ncmpcpp
     brightnessctl
     powertop
+
+    cliphist
+    wl-clipboard
   ];
 }
