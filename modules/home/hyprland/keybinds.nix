@@ -82,7 +82,11 @@ let
     "${mod}, mouse_down, workspace, e+1"
     "${mod}, mouse_up, workspace, e-1"
     "${mod}, L, exec, hyprlock"
-    "${ctrl}, F11, exec, pkill wf-recorder"
+    ",Print , exec ,grim ~/Pictures/screenshots/screenshot-$(date +%F_%T).png"
+    "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/screenshots/screenshot-$(date +%F_%T).png"
+    "${ctrl}, F12, exec, wf-recorder -f ~/Videos/recording-$(date +%F_%T).mp4 --size 3840x2160 --pos 0,0"
+    "${ctrl}, F11, exec, pkill -INT wf-recorder"
+
   ];
 in
 {
