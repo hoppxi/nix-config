@@ -1,41 +1,71 @@
-# my-nixos-config
+## Sky Theme for Hyprland and Nixos
 
-NixOS config using flakes with Hyprland, home-manager, and a bunch of riced apps
+A fully reproducible and modular NixOS setup using Hyprland, themed entirely in a sleek and dreamy Sky aesthetic.  
+Everything from system UI (Waybar, Mako, SDDM) to applications (Neovim, VSCode, Thunar, GTK, Rofi) follows a unified sky-themed look.
 
-## what's inside
+> Managed entirely via flakes and home-manager — no config files in `~/.config`!
 
-- hyprland + wayland apps
-- home-manager + flake setup
-- vscode, nvim, rofi, mako, and more
-- themes applied (catppuccin mostly)
-- all config managed in nix (no random dotfiles in `~/.config`)
+## Features
 
-## goals
+- **Hyprland** with sky blur, animations.
+- **Waybar** with blur, sky colors, and clean modules.
+- **Mako** for themed notifications.
+- **Rofi** menus styled with sky gradient and blur.
+- **Modular flake** setup — easy to maintain and extend.
+- **Kitty**, **Thunar**, **Brave**, **VSCode**, **Neovim**, and more fully themed.
+- **SDDM** with Sugar Candy + Sky accent theme.
+- GTK apps themed with matching Sky look.
+- Purely declarative with **Home Manager** and **Nix Flakes**.
 
-- make it clean, modular, and fully declarative
-- show all useful info: battery, wifi, clock, screen recorder notifications etc.
-- theme everything just with nix
+## Getting Started
 
-## TODO
+> Prerequisites: You must be using **NixOS Unstable** and have **flakes** enabled.
 
-- [ ] write bash scripts for notifications (e.g. battery, network)
-- [ ] add keybinds needed for Hyprland
-- [ ] make it _mine_: wallpapers (Hyprpaper), colors, layout
-- [x] waybar customization
-- [ ] rofi customization (launcher, power menu, emoji, etc.)
-- [ ] neovim full rice (LSP, UI, plugins)
-- [ ] vscode tweaks (extensions, settings.json)
-- [ ] gtk apps look consistent
-- [ ] add more modules and scripts
-- [ ] test and polish
+1. **Clone the repository**
 
-## how to get started
+   ```bash
+   git clone https://github.com/yourname/nix-config ~/nix-config
+   cd ~/nix-config
+   ```
 
-```bash
-git clone https://github.com/yourname/nix-config ~/nix-config
-cd ~/nix-config
+2. **Edit your `flake.nix`** to point to your hostname and username. Just that!
 
-# change to your username and hostname in flake.nix and run
-nixos-rebuild --flake ~/nix-config#your-hostname switch
-home-manager --flake ~/nix-config#your-username@your-hostname switch
-```
+3. **Copy your `hardware-configuration.nix`**
+
+   > important: this is for my pc, so for yours you should yours.
+
+   ```bash
+   rm modules/system/hardware-configuration.nix
+   sudo cp /etc/nixos/hardware-configuration.nix ~/nix-config/modules/system/hardware-configuration.nix
+   ```
+
+4. **Rebuild your system and Activate home-manager**
+
+   ```bash
+   sudo nixos-rebuild switch --flake .#your-hostname
+   home-manager switch --flake .#your-username
+   ```
+
+<!--## Screenshots
+
+ When done
+| Section       | Preview                                      |
+| ------------- | -------------------------------------------- |
+| Hyprland      | ![Hyprland](assets/screenshots/hyprland.png) |
+| Thunar        | ![Thunar](assets/screenshots/thunar.png)     |
+| Waybar        | ![Waybar](assets/screenshots/waybar.png)     |
+| Rofi          | ![Rofi](assets/screenshots/rofi.png)         |
+| Mako          | ![Mako](assets/screenshots/mako.png)         |
+| SDDM          | ![SDDM](assets/screenshots/sddm.png)         |
+| Kitty         | ![Kitty](assets/screenshots/kitty.png)       |
+| Neovim        | ![Neovim](assets/screenshots/nvim.png)       |
+| VSCode        | ![VSCode](assets/screenshots/vscode.png)     |
+| Brave Browser | ![Brave](assets/screenshots/brave.png)       |
+| Hyprlock      | ![Brave](assets/screenshots/brave.png)       |
+-->
+
+## Credits
+
+- Hyprland
+- [Mechabar](https://github.com/sejjy/mechabar) for scripts
+- [Rofi](https://github.com/adi1090x/rofi) for themes and scripts
