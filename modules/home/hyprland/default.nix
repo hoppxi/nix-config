@@ -19,6 +19,7 @@
     ./hypreco/hyprlock.nix
     ./hypreco/hyprpaper.nix
     ./hypreco/hypridle.nix
+    ./hypreco/hyprcursor.nix
   ];
 
   wayland.windowManager.hyprland = {

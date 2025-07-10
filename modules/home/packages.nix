@@ -40,13 +40,6 @@
 
     zsh-powerlevel10k
 
-    # qt and gtk app theme
-    gnome-themes-extra
-    papirus-icon-theme
-    bibata-cursors
-    adwaita-qt
-    catppuccin-gtk
-
     ncmpcpp
     brightnessctl
     powertop

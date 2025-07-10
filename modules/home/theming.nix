@@ -3,43 +3,40 @@
 {
   gtk = {
     enable = true;
-
     theme = {
-      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = (pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        variant = "mocha";
-        size = "compact";
-      });
+      name = "Orchis-Teal-Dark-Compact";
+      package = pkgs.orchis-theme.override {
+        tweaks = [ "compact" ];
+      };
     };
-
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-
     cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
+      name = "Hyprland-Cursor";
+      package = pkgs.hyprcursor;
     };
-
     font = {
       name = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;
       size = 10;
     };
+    gtk3.extraConfig = {
+      "gtk-application-prefer-dark-theme" = true;
+    };
+    gtk4.extraConfig = {
+      text = ''gtk-application-prefer-dark-theme=1'';
+    };
   };
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adwaita-dark";
+    platformTheme.name = "gtk"; # use gtk (through gtk2)
+    style = {
+      name = "gtk2";
+      package = pkgs.libsForQt5.breeze-qt5; # Breeze style engine for Qt5
+    };
   };
 
-  xdg.configFile."gtk-4.0/assets".source =
-    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/assets";
-  xdg.configFile."gtk-4.0/gtk.css".source =
-    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk.css";
-  xdg.configFile."gtk-4.0/gtk-dark.css".source =
-    "${pkgs.catppuccin-gtk}/share/themes/Catppuccin-Mocha-Compact-Lavender-Dark/gtk-4.0/gtk-dark.css";
 }
