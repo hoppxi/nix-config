@@ -6,21 +6,21 @@
       gaps_in = 5;
       gaps_out = 10;
       border_size = 2;
-      "col.active_border" = "rgba(89b4faee) rgba(cba6f7ee) 45deg";
-      "col.inactive_border" = "rgba(1e1e2eaa)";
+      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+      "col.inactive_border" = "rgba(595959aa)";
     };
 
     decoration = {
       rounding = 10;
-      rounding_power = 12;
+      rounding_power = 2;
       blur = {
         enabled = true;
-        size = 3;
-        passes = 1;
+        size = 8;
+        passes = 3;
         vibrancy = 0.1696;
       };
-      active_opacity = 0.85;
-      inactive_opacity = 0.76;
+      active_opacity = 0.7;
+      inactive_opacity = 0.5;
       shadow = {
         enabled = true;
         range = 4;

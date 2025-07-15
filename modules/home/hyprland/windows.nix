@@ -1,33 +1,46 @@
-{ config, ... }:
-
 {
   wayland.windowManager.hyprland.settings = {
     animations = {
-      enabled = "yes, please:)";
+      enabled = "yes";
+
       bezier = [
-        "easeOutQuint,0.23,1,0.32,1"
-        "easeInOutCubic,0.65,0.05,0.36,1"
-        "linear,0,0,1,1"
-        "almostLinear,0.5,0.5,0.75,1.0"
-        "quick,0.15,0,0.1,1"
+        "easeOutQuint, 0.23, 1, 0.32, 1"
+        "easeInOutCubic, 0.65, 0.05, 0.36, 1"
+        "easeInSine, 0.47, 0, 0.745, 0.715"
+        "easeOutExpo, 0.19, 1, 0.22, 1"
+        "overshoot, 0.68, -0.95, 0.256, 1.75"
+        "spring, 0.5, 1.5, 0.5, 1"
+        "snappy, 0.4, 0, 0.2, 1"
+        "floaty, 0.3, 0.6, 0.4, 1"
       ];
+
       animation = [
-        "global, 1, 10, default"
-        "border, 1, 5.39, easeOutQuint"
-        "windows, 1, 4.79, easeOutQuint"
-        "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-        "windowsOut, 1, 1.49, linear, popin 87%"
-        "fadeIn, 1, 1.73, almostLinear"
-        "fadeOut, 1, 1.46, almostLinear"
-        "fade, 1, 3.03, quick"
-        "layers, 1, 3.81, easeOutQuint"
-        "layersIn, 1, 4, easeOutQuint, fade"
-        "layersOut, 1, 1.5, linear, fade"
-        "fadeLayersIn, 1, 1.79, almostLinear"
-        "fadeLayersOut, 1, 1.39, almostLinear"
-        "workspaces, 1, 1.94, almostLinear, fade"
-        "workspacesIn, 1, 1.21, almostLinear, fade"
-        "workspacesOut, 1, 1.94, almostLinear, fade"
+        # GLOBAL movement
+        "global, 1, 5, easeInOutCubic"
+
+        # Border transitions
+        "border, 1, 5, easeOutExpo"
+
+        "windows, 1, 4.8, overshoot"
+        "windowsIn, 1, 4.2, overshoot, popin 70%"
+        "windowsOut, 1, 4.2, easeOutExpo, slidefade 70%"
+
+        # Fades — cinematic subtle bounce
+        "fadeIn, 1, 2.4, spring"
+        "fadeOut, 1, 2.4, spring"
+        "fade, 1, 3.2, floaty"
+
+        # Layers (Rofi, Waybar, Notifications, etc)
+        # "layers, 1, 3.5, easeOutQuint"
+        # "layersIn, 1, 3.0, spring, fade popin 70%"
+        # "layersOut, 1, 3.0, easeInSine, fade popout 80%"
+        # "fadeLayersIn, 1, 2.3, floaty"
+        # "fadeLayersOut, 1, 2.1, floaty"
+
+        # Workspaces — immersive switching
+        "workspaces, 1, 2.4, overshoot, slidefade 40%"
+        "workspacesIn, 1, 2.2, overshoot, slidefade 40%"
+        "workspacesOut, 1, 2.2, easeOutExpo, slidefade 40%"
       ];
     };
 
@@ -36,21 +49,46 @@
       preserve_split = true;
     };
 
-    misc = { force_default_wallpaper = 0; };
+    misc = {
+      disable_hyprland_logo = false;
+      force_default_wallpaper = 0;
+      font_family = "JetBrains Mono Nerd Font";
+      animate_manual_resizes = true;
+    };
+
+    gestures = {
+      workspace_swipe = true;
+    };
 
     windowrule = [
+
+      # Focus rules
+      "nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0"
+      "nofocus, class:^(notifications)$"
+      "noborder, class:^(notifications)$"
+
+      # "animation popin, class:^(rofi)$"
+      # "animation popout, class:^(rofi)$"
+      # "nofocus, class:^(rofi)$"
+      # "center, class:^(rofi)$"
+      # "float, class:^(rofi)$"
+      # "size 50% 40%, class:^(rofi)$"
+
+      "animation popin, class:^(notifications)$"
+      "animation popout, class:^(notifications)$"
+      "nofocus, class:^(notifications)$"
+      "float, class:^(notifications)$"
+
       "suppressevent maximize, class:.*"
-      "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-      "nofocus,class:^(mako)$"
-      "noborder,class:^(mako)$" 
     ];
 
     layerrule = [
       "blur, waybar"
-      "blur,notifications"
-      "ignorezero,notifications"
+      "blur, notifications"
+      "ignorezero, notifications"
       "blur, rofi"
       "ignorezero, rofi"
+      "blur, widget"
     ];
   };
 }
