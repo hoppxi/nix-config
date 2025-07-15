@@ -282,3 +282,13 @@ tooltip {
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 13px;
 }
+
+#tray menu {
+  background-color: @base;
+  color: @text;
+  border-radius: 10px;
+  border: 1px solid @surface1;
+  padding: 6px 10px;
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 13px;
+}
