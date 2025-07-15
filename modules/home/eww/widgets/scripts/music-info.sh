@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 COVER="/tmp/.music_cover.jpg"
-DEFAULT_COVER="../../nix-config/assets/wallpapers/wallpaper1.jpg"
+DEFAULT_COVER="./assets/wallpaper1.jpg"
 
 ## Get status
 get_status() {
