@@ -1,14 +1,16 @@
 { config, lib, ... }:
 
 let
-  inherit (lib) genList;
+  inherit (lib) genList imap0;
+
+  toggleWidget = import ../waybar/modules/toggle-widget.nix;
 
   mod = "SUPER";
   shift = "SHIFT";
   ctrl = "CTRL";
   alt = "ALT";
   ctrlAlt = "CTRLALT";
-  ctrlShift = "CTRL SHIFT";
+  ctrlShift = "CTRLSHIFT";
 
   # Workspace switching
   workspaceBinds = genList (
@@ -31,14 +33,27 @@ let
     "music"
     "clipboard"
   ];
-  rofiMenuMapped = lib.imap0 (
-    i: name: "${ctrlShift}, ${toString (i + 1)}, exec, ~/.config/rofi/scripts/${name}.sh"
+  rofiMenuMapped = imap0 (
+    i: name: "${ctrlAlt}, ${toString (i + 1)}, exec, ~/.config/rofi/scripts/${name}.sh"
   ) rofiMenuBinds;
 
+  # EWW Widgets
+  ewwMenuBinds = [
+    "power"
+    "quicksettings"
+    "music"
+    "calendar"
+    "screenshot"
+  ];
+  ewwMenuMapped = imap0 (
+    i: name: "${ctrlShift}, ${toString (i + 1)}, exec, ${toggleWidget.tw name}"
+  ) ewwMenuBinds;
+
   # Wallpaper switch
+  # Out of key
   wallpaperBinds = [
-    "${ctrlAlt}, 1, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper1.jpg'"
-    "${ctrlAlt}, 2, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper2.jpg'"
+    "${ctrlAlt}, Q, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper1.jpg'"
+    "${ctrlAlt}, W, exec, hyprctl hyprpaper wallpaper 'eDP-1,~/.local/share/hyprpaper/wallpapers/wallpaper2.jpg'"
     "${ctrlAlt}, R, exec, ~/.config/hypr/scripts/random-wallpaper.sh"
   ];
 
@@ -64,34 +79,59 @@ let
 
   # Core binds
   coreBinds = [
-    "${mod}, RETURN, exec, kitty"
+    "${mod}, escape, exec, kitty"
     "${mod}, C, exec, kitty"
     "${mod}, E, exec, thunar"
     "${mod}, D, exec, rofi -show drun"
+    "${mod}, V, exec, code"
+    "${mod}, B, exec, brave &"
+
     "${mod}, T, togglefloating,"
     "${mod}, Q, killactive,"
-    "${mod}, M, exit,"
+    "${mod} ${shift}, Q, exit,"
     "${mod}, P, pseudo,"
-    "${mod}, J, togglesplit,"
+    "${mod}, O, togglesplit,"
+
     "${mod}, left, movefocus, l"
     "${mod}, right, movefocus, r"
     "${mod}, up, movefocus, u"
     "${mod}, down, movefocus, d"
-    "${mod}, S, togglespecialworkspace, magic"
-    "${mod} ${shift}, S, movetoworkspace, special:magic"
+
+    "${mod}, H, resizeactive, -10 0 "
+    "${mod}, J, resizeactive, 0 10 "
+    "${mod}, K, resizeactive, 0 -10 "
+    "${mod}, L, resizeactive, 10 0 "
+
+    "${mod}, M, togglespecialworkspace, magic"
+    "${mod} ${shift}, M, movetoworkspace, special:magic"
+
     "${mod}, mouse_down, workspace, e+1"
     "${mod}, mouse_up, workspace, e-1"
+    "${mod}, A, workspace, e+1"
+    "${mod}, S, workspace, e-1"
+
     "${mod}, L, exec, hyprlock"
+    "${mod}, F3, exec, hyprlock"
+
+    "${ctrl},escape, exec, eww close-all && echo 0 > /tmp/eww_toggle"
     ",Print , exec ,grim ~/Pictures/screenshots/screenshot-$(date +%F_%T).png"
-    "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/screenshots/screenshot-$(date +%F_%T).png"
-    "${ctrl}, F12, exec, wf-recorder -f ~/Videos/recording-$(date +%F_%T).mp4 --size 3840x2160 --pos 0,0"
+    "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
+    "${ctrl}, F12, exec, wf-recorder -f ~/Pictures/Screenshots/Records/recording-$(date +%F_%T).mp4 --size 3840x2160 --pos 0,0"
     "${ctrl}, F11, exec, pkill -INT wf-recorder"
+    "${alt}, S, exec, ${toggleWidget.tw "screenshot"}"
+    "${mod}${shift}, S, exec, ${toggleWidget.tw "screenshot"}"
 
   ];
 in
 {
   wayland.windowManager.hyprland.settings = {
-    bind = coreBinds ++ workspaceBinds ++ moveToWorkspaceBinds ++ rofiMenuMapped ++ wallpaperBinds;
+    bind =
+      coreBinds
+      ++ workspaceBinds
+      ++ moveToWorkspaceBinds
+      ++ rofiMenuMapped
+      ++ ewwMenuMapped
+      ++ wallpaperBinds;
     bindl = bindlKeys;
     bindm = bindmKeys;
   };
