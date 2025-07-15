@@ -1,0 +1,213 @@
+@define-color background                        #111417;
+@define-color on-background                     #e1e2e8;
+@define-color surface                           #111417;
+@define-color surface-dim                       #111417;
+@define-color surface-bright                    #36393e;
+@define-color surface-container-lowest          #0b0e12;
+@define-color surface-container-low             #191c20;
+@define-color surface-container                 #1d2024;
+@define-color surface-container-high            #272a2e;
+@define-color surface-container-highest         #323539;
+@define-color on-surface                        #e1e2e8;
+@define-color surface-variant                   #414750;
+@define-color on-surface-variant                #c1c7d1;
+@define-color inverse-surface                   #e1e2e8;
+@define-color inverse-on-surface                #2e3135;
+@define-color outline                           #8b919b;
+@define-color outline-variant                   #414750;
+@define-color shadow                            #000000;
+@define-color scrim                             #000000;
+@define-color surface-tint                      #9acbff;
+@define-color primary                           #9acbff;
+@define-color on-primary                        #003355;
+@define-color primary-container                 #00568c;
+@define-color on-primary-container              #eff5ff;
+@define-color inverse-primary                   #07629d;
+@define-color secondary                         #b1c9e5;
+@define-color on-secondary                      #1b3249;
+@define-color secondary-container               #2b4159;
+@define-color on-secondary-container            #bfd7f4;
+@define-color tertiary                          #ebb2ff;
+@define-color on-tertiary                       #4a195f;
+@define-color tertiary-container                #703f85;
+@define-color on-tertiary-container             #fff2fe;
+@define-color error                             #ffb4ab;
+@define-color on-error                          #690005;
+@define-color error-container                   #93000a;
+@define-color on-error-container                #ffdad6;
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  padding: 0;
+  margin: 0;
+}
+
+window {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+/*  */
+.music,
+.calendar,
+.quciksettings,
+.screenshot {
+  padding: 10px;
+  background-color: rgba(29, 32, 36, 0.116);
+  border-radius: 10px;
+  border: 1px solid @surface-variant;
+}
+
+.music .album-art {
+  border-radius: 10px;
+  border: 1px solid @surface-variant;
+  margin-bottom: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.7;
+}
+
+.music .media-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: @primary;
+  margin-bottom: 4px;
+}
+
+.music .media-info {
+  font-size: 11px;
+  color: @on-surface-variant;
+  margin-bottom: 10px;
+}
+
+.music .media-pos {
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.music .progess {
+  min-width: 310px;
+  min-height: 10px;
+}
+
+.music .progess > .trough {
+  min-width: 0px;
+}
+
+.music .btn {
+  font-family: "Material Symbols Outlined";
+  font-size: 13px;
+  color: @on-primary-container;
+  background-color: @primary-container;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 50px;
+  margin-top: 10px;
+  margin-right: 4px;
+  margin-left: 4px;
+  transition: background 0.2s ease;
+}
+
+/* Calendar */
+.calendar .current-date {
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.calendar .current-month-year {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: @primary;
+}
+
+.calendar calendar {
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid @surface-variant;
+}
+
+/* Quicksettings */
+
+.quciksettings .row-container:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.quciksettings .rc-btn {
+  padding: 10px;
+  border: 1px solid @surface-variant;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.quciksettings .rc-btn:last-child {
+  margin-left: 8px;
+}
+
+.quciksettings .rc-icon {
+  font-size: 22px;
+  color: @primary;
+}
+
+.quciksettings .rc-desc :last-child {
+  font-size: 10px;
+  color: @on-surface-variant;
+}
+
+.quciksettings .slider-row {
+  border: 1px solid @surface-variant;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 6px;
+}
+
+.quciksettings .slider {
+  min-height: 4px;
+  border-radius: 10px;
+  min-width: 252px;
+  margin-left: -17px;
+}
+
+.quciksettings .sr-icon {
+  background-color: transparent;
+  padding: 1px;
+  font-size: 15px;
+  color: @primary;
+  margin-left: 6px;
+}
+
+/* Power */
+.power {
+  min-width: 400px;
+}
+
+.power .pbtn {
+  padding: 30px;
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 17px;
+  color: @primary;
+  border: 1px solid @surface-variant;
+}
+
+.power .pbtn:hover,
+.power .pbtn:focus {
+  border-radius: 40px;
+}
+
+/* Screenshot */
+.screenshot {
+  padding: 5px;
+}
+
+.screenshot .sbtn {
+  padding: 10px;
+  margin: 5px;
+  color: @primary;
+  border: 1px solid @surface-variant;
+}
+
+.screenshot .label {
+  font-size: 22px;
+}

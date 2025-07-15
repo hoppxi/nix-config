@@ -1,0 +1,47 @@
+
+(defwidget screenshotwidget []
+  (box
+    :class "screenshot"
+    :orientation "horizontal"
+    :space-evenly true
+    :width 400
+    :height 100
+    :orientation "vertical"
+    :halign "center"
+    :valign "center"
+    
+    (label :class "label" :text "Screenshot Utils")
+    
+    (box
+      (button
+        :class "sbtn"
+        :onclick `eww close screenshot && sleep .5 && grim ${get_env('HOME')}/Pictures/Screenshots/screenshot-${EWW_TIME}.png && notify-send 'Screenshot Taken' 'Full screen screenshot saved' &`
+        (label :text "󰆠  Full Screen")
+      )
+      (button
+        :class "sbtn"
+        :onclick `eww close screenshot && grim -g "$(slurp)" ${get_env('HOME')}/Pictures/Screenshots/screenshot-${EWW_TIME}.png && notify-send 'Screenshot Taken' 'Selected area screenshot saved' &`
+        (label :text "󰆞  Select Area")
+      )
+    )
+    (box
+      (button
+        :class "sbtn"
+        :onclick `eww close screenshot && wf-recorder -f ${get_env('HOME')}/Pictures/Screenshots/Records/recording-${EWW_TIME}.mp4 & notify-send 'Recording Started' 'Recording started. Press Ctrl+F11 to stop.' & `
+        (label :text "󰻃  Start Recording")
+      )
+      (button
+        :class "sbtn"
+        :onclick "eww close screenshot && thunar ${get_env('HOME')}/Pictures/Screenshots &"
+        (label :text "  Open Folder")
+      )
+    )
+    (button
+      :class "sbtn"
+      :onclick "eww close screenshot"
+      (label :text "󰜺 Close")
+    )
+  )
+  
+  
+)

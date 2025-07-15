@@ -1,0 +1,55 @@
+
+(defwidget powerwidget []
+  (box
+    :class "power"
+    :orientation "horizontal"
+    :space-evenly true
+    :width 400
+    :height 100
+    :orientation "vertical"
+    :halign "center"
+    :valign "center"
+    
+    (box
+      (button
+        :class "pbtn"
+        :onclick "eww close power | mpc -q pause | pamixer --set-volume 0 | hyprlock"
+        (label :text " Lock")
+      )
+      (button
+        :class "pbtn"
+        :onclick "eww close power |kill -9 -1"
+        (label :text "󰍃 Logout")
+      )
+      (button
+        :class "pbtn"
+        :onclick "eww close power | mpc -q pause | pamixer --set-volume 0 | systemctl suspend"
+        (label :text " Suspend")
+      )
+    )
+    (box
+      (button
+        :class "pbtn"
+        :onclick "eww close power | systemctl hibernate"
+        (label :text "󰏦 Hibernate")
+      )
+      (button
+        :class "pbtn"
+        :onclick "eww close power | systemctl reboot"
+        (label :text " Reboot")
+      )
+      (button
+        :class "pbtn"
+        :onclick "eww close power | systemctl poweroff"
+        (label :text " Shutdown")
+      )
+    )
+    (button
+      :class "pbtn"
+      :onclick "eww close power"
+      (label :text "󰜺 Cancel")
+    )
+  )
+  
+  
+)

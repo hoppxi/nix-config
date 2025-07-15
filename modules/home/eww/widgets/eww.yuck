@@ -1,0 +1,79 @@
+(include "./widgets/music.yuck")
+(include "./widgets/calendar.yuck")
+(include "./widgets/quicksettings.yuck")
+(include "./widgets/power.yuck")
+(include "./widgets/screenshot.yuck")
+
+(defwindow music
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :y "10px"
+    :width "330px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore false
+  :namespace "widget"
+  (musicwidget)
+)
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :y "10px"
+    :width "330px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore false
+  :namespace "widget"
+  (calendarwidget)
+)
+
+(defwindow quicksettings
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :y "10px"
+    :width "330px"
+    :anchor "top right"
+  )
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore false
+  :namespace "widget"
+  (quicksettingswidget)
+)
+
+(defwindow power
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :width "100%"
+    :height "100%"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :focusable "exclusive"
+  ; :exclusive true
+  :namespace "widget"
+  (powerwidget)
+)
+
+(defwindow screenshot
+  :monitor 0
+  :geometry (geometry
+    :x "10px"
+    :width "400px"
+    :anchor "center"
+  )
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore false
+  :namespace "widget"
+  (screenshotwidget)
+)

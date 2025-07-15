@@ -1,0 +1,24 @@
+(defpoll DATE :interval "0" `date +%d`)
+(defpoll YEAR :interval "0" `date "+%B %Y"`)
+
+(defwidget calendarwidget []
+  (box
+    :class "calendar"
+    :orientation "vertical"
+    :space-evenly false
+    :width 330
+    
+    (box
+      :class "current-date"
+      DATE
+    )
+    
+    (box
+      :class "current-month-year"
+      YEAR
+    )
+    
+    (calendar)
+  )
+)
+

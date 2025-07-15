@@ -1,0 +1,280 @@
+
+(defpoll CONNECTION :interval "1s" `scripts/connection.sh --connection`)
+(defpoll CONNECTION_STATUS :interval "1s" `scripts/connection.sh --status`)
+(defpoll CONNECTION_STATUS_BOOL :interval "1s" `scripts/connection.sh --status-bool`)
+(defpoll CONNECTION_TYPE :interval "1s" `scripts/connection.sh --type`)
+
+(defpoll VOLUME_LEVEL :interval "1s" `scripts/volume.sh --level`)
+(defpoll VOLUME_STATUS :interval "1s" `scripts/volume.sh --muted`)
+(defpoll VOLUME_DEVICE_NAME :interval "1s" `scripts/volume.sh --device`)
+(defpoll MIC_LEVEL :interval "1s" `scripts/volume.sh --mic-level`)
+(defpoll MIC_MUTED :interval "1s" `scripts/volume.sh --mic-muted`)
+
+(defpoll BATTERY_LEVEL :interval "1s" `scripts/battery.sh --level`)
+(defpoll BATTERY_STATUS :interval "1s" `scripts/battery.sh --status`)
+(defpoll BATTERY_CHARGING :interval "1s" `scripts/battery.sh --charging`)
+
+(defpoll BLUETOOTH_STATUS :interval "1s" `scripts/bluetooth.sh --status`)
+(defpoll BLUETOOTH_DEVICE :interval "1s" `scripts/bluetooth.sh --device`)
+(defpoll BLUETOOTH_ON_OFF :interval "1s" `bluetoothctl show | awk '/Powered:/ {print $2}'`)
+(defpoll AIRPLANE_ON_OFF :interval "1s" `scripts/airplane.sh --is-on`)
+
+(defpoll BACKLIGHT_LEVEL :interval "1s" `scripts/backlight.sh --level`)
+
+(defwidget quicksettingswidget []
+  (box
+    :orientation "vertical"
+    :space-evenly false
+    :width 330
+    :class "quciksettings"
+    
+    
+    (box
+      :class "row-container"
+      :orientation "horizontal"
+      :valign "start"
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "scripts/wifi.sh &"
+        :onrightclick "kitty -e nmtui &"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text {CONNECTION_STATUS_BOOL ? "󱚽" : "󰖪"})
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text CONNECTION)
+            (label :halign "start" :limit-width 30 :text {CONNECTION_STATUS_BOOL ? "Connected" : "Disconnected"})
+          )
+        )
+      )
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "pavucontrol --tab=3 &"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text {VOLUME_STATUS ? "" : ""})
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text VOLUME_DEVICE_NAME)
+            (label :halign "start" :limit-width 30 :text {VOLUME_STATUS ? "Muted" : "${VOLUME_LEVEL}%"})
+          )
+        )
+      )
+    )
+    
+    
+    
+    
+    (box
+      :class "row-container"
+      :orientation "horizontal"
+      :valign "start"
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "kitty -e sudo powertop &"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text {BATTERY_CHARGING ? "󰂄" :"󰁹"})
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text "Battery")
+            (label :halign "start" :limit-width 30 :text "${BATTERY_LEVEL} ${BATTERY_STATUS}")
+          )
+        )
+      )
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text "󰃞")
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text "Brightness")
+            (label :halign "start" :limit-width 30 :text "${BACKLIGHT_LEVEL}%")
+          )
+        )
+      )
+    )
+    
+    
+    
+    
+    
+    (box
+      :class "row-container"
+      :orientation "horizontal"
+      :valign "start"
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "pavucontrol --tab=4 &"
+        :onmiddleclick "pamixer --source 0 --increase 5"
+        :onrightclick "pamixer --source 0 --decrease 5"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text { MIC_MUTED ? "󰍭" : "" })
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text "MIC")
+            (label :halign "start" :limit-width 30 :text { MIC_MUTED ? "Muted" : "${MIC_LEVEL}%" })
+          )
+        )
+      )
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "bluetoothctl show | grep -q 'Powered: yes' && echo -e 'power off\nquit' | bluetoothctl &> /dev/null || echo -e 'power on\nquit' | bluetoothctl &> /dev/null"
+        :onrightclick "kitty -e btmgmt &"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text {BLUETOOTH_STATUS ? "󰂱" : "󰂲" } )
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text {BLUETOOTH_ON_OFF == "yes" ? "BT on" : "BT off"})
+            (label :halign "start" :limit-width 30 :text BLUETOOTH_DEVICE)
+          )
+        )
+      )
+    )
+    
+    
+    
+    
+    
+    (box
+      :class "row-container"
+      :orientation "horizontal"
+      :valign "start"
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick "scripts/airplane.sh --toggle"
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text {AIRPLANE_ON_OFF ? "󰀝" : "󰀞"})
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text "Airplane mode")
+            (label :halign "start" :limit-width 30 :text {AIRPLANE_ON_OFF ? "On" : "Off"})
+          )
+        )
+      )
+      (button
+        :class "rc-btn"
+        :halign "start"
+        :valign "start"
+        :width 153
+        :onclick ""
+        (box
+          :halign "start"
+          :valign "start"
+          :space-evenly false
+          :spacing 20
+          (label :class "rc-icon" :valign "start" :text "" )
+          (box
+            :orientation "vertical"
+            :halign "start"
+            :class "rc-desc"
+            (label :halign "start" :limit-width 30 :text "Clipboard")
+            (label :halign "start" :limit-width 30 :text "open")
+          )
+        )
+      )
+    )
+    
+    
+    
+    
+    
+    (box
+      :class "slider-row"
+      :orientation "horizontal"
+      :space-evenly false
+      :spacing 25
+      (button :onclick "pamixer --toggle-mute" :class "sr-icon" {VOLUME_STATUS ? " " : " "})
+      (scale
+        :class "slider"
+        :min 0
+        :active true
+        :max 101
+        :width 200
+        :height 10
+        :style "min-height: 6px; border-radius: 10px;"
+        :value VOLUME_LEVEL
+        :onchange "pamixer --set-volume {}"
+      )
+    )
+    (box
+      :class "slider-row"
+      :orientation "horizontal"
+      :space-evenly false
+      :spacing 25
+      (button :class "sr-icon" "󰃞 ")
+      (scale
+        :class "slider"
+        :min 2
+        :active true
+        :max 101
+        :width 200
+        :height 10
+        :style "min-height: 6px; border-radius: 10px;"
+        :value BACKLIGHT_LEVEL
+        :onchange "brightnessctl set {}%"
+      )
+    )
+  )
+  
+)
