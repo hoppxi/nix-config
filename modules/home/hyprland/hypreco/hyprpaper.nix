@@ -1,10 +1,15 @@
-{ config, lib, username, ... }:
+{
+  config,
+  lib,
+  username,
+  ...
+}:
 
 let
   wpDir = "${config.home.homeDirectory}/nix-config/assets/wallpapers";
-in {
-  home.file.".local/share/hyprpaper/wallpapers".source =
-    config.lib.file.mkOutOfStoreSymlink wpDir;
+in
+{
+  home.file.".local/share/hyprpaper/wallpapers".source = config.lib.file.mkOutOfStoreSymlink wpDir;
   home.file.".local/share/hyprpaper/wallpapers".recursive = true;
 
   services.hyprpaper = {
