@@ -15,13 +15,14 @@
     ./services/default.nix
     ./shell/zsh.nix
     ./shell/starship.nix
-    ./mako.nix
-    ./terminal.nix
-    ./theming.nix
-    ./vscode.nix
+    ./mako/default.nix
+    ./terminal/default.nix
+    ./vscode/default.nix
+    ./eww/default.nix
     ./apps.nix
     ./devtools.nix
     ./packages.nix
+    ./theming.nix
   ];
 
   home = {

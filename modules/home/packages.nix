@@ -2,53 +2,62 @@
 
 {
   home.packages = with pkgs; [
-    # Core CLI tools
-    jq
-    just
+
+    # Core CLI Utilities
     git
     git-filter-repo
-
-    # CLI tools
+    just
+    jq
     curl
     wget
-    neofetch
-    htop
     unzip
     zip
     ffmpeg
-    bat
+
+    # System Info & Monitoring
+    neofetch
+    htop
     btop
-    lazygit
-    du-dust
+    lm_sensors
+    powertop
+    upower
+
+    # Filesystem Tools
     eza
-    zoxide
+    du-dust
     fd
     ripgrep
-    jq
     fzf
+    bat
+
+    # Shell & Terminal
+    zoxide
     tmux
+    zsh-powerlevel10k
+
+    # Fun / Visual CLI
     cmatrix
     pipes
     tty-clock
     hollywood
 
+    # Media & Audio Control
     pamixer
-
-    upower
-    libnotify
-
-    lm_sensors
-    playerctl
     pavucontrol
+    playerctl
     mediainfo
-
-    zsh-powerlevel10k
-
     ncmpcpp
     brightnessctl
-    powertop
 
-    cliphist
+    # Clipboard
     wl-clipboard
+    cliphist
+
+    # Notifications & Bluetooth
+    libnotify
+    bluez-experimental
+
+    # Audio Server
+    pulseaudio
   ];
 }
