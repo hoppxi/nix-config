@@ -1,11 +1,10 @@
-## Nixos + hyprland on the sky
+## My Nixos
 
 ![img](assets/screenshots/hyprland3.png)
 
 > Currently developing eww widgets for rofi replacement
 
-A fully reproducible and modular NixOS setup using Hyprland, themed entirely in a sleek and dreamy Sky aesthetic.  
-Everything from system UI to applications (Neovim, VSCode, Thunar, GTK, Rofi) follows a unified sky-themed look.
+# Nixos + hyprland on the sky
 
 > Managed entirely via flakes and home-manager; no config files in `~/.config` just symlinks!
 
@@ -14,7 +13,7 @@ Everything from system UI to applications (Neovim, VSCode, Thunar, GTK, Rofi) fo
 - **Hyprland** with sky blur, animations.
 - **Waybar** with blur, sky colors, and clean modules.
 - **Mako** for themed notifications.
-- **Rofi** menus styled with sky gradient and blur.
+- **Rofi and EWW** menus styled with sky gradient and blur.
 - **Modular flake** setup — easy to maintain and extend.
 - **Kitty**, **Thunar**, **Brave**, **VSCode**, **Neovim**, and more fully themed.
 - **SDDM** with Sugar Candy + Sky accent theme.
@@ -43,6 +42,8 @@ Everything from system UI to applications (Neovim, VSCode, Thunar, GTK, Rofi) fo
    sudo cp /etc/nixos/hardware-configuration.nix ~/nix-config/modules/system/hardware-configuration.nix
    ```
 
+   > Important: change your username and email for git found at `modules/home/git/default.nix`
+
 4. **Rebuild your system and Activate home-manager**
 
    ```bash
@@ -52,25 +53,29 @@ Everything from system UI to applications (Neovim, VSCode, Thunar, GTK, Rofi) fo
 
 ## Screenshots
 
-| hyprland                                 |                                         |
-| ---------------------------------------- | --------------------------------------- |
-| ![img](assets/screenshots/hyprland2.png) | ![img](assets/screenshots/hyprland.png) |
+| hyprland                                 |                                         |                                          |
+| ---------------------------------------- | --------------------------------------- | ---------------------------------------- |
+| ![img](assets/screenshots/hyprland2.png) | ![img](assets/screenshots/hyprland.png) | ![img](assets/screenshots/hyprland4.png) |
 
 | waybar                                |
 | ------------------------------------- |
 | ![img](assets/screenshots/waybar.png) |
 
-| vscode                                | neovim                                | gtk                                | kitty                                |
-| ------------------------------------- | ------------------------------------- | ---------------------------------- | ------------------------------------ |
-| ![img](assets/screenshots/vscode.png) | ![img](assets/screenshots/neovim.png) | ![img](assets/screenshots/gtk.png) | ![img](assets/screenshots/kitty.png) |
-
-| Power menu                           | wifi menu                           | battery                                | backlight                                | volume                                |
+<!-- | Power menu                           | wifi menu                           | battery                                | backlight                                | volume                                |
 | ------------------------------------ | ----------------------------------- | -------------------------------------- | ---------------------------------------- | ------------------------------------- |
 | ![img](assets/screenshots/power.png) | ![img](assets/screenshots/wifi.png) | ![img](assets/screenshots/battery.png) | ![img](assets/screenshots/backlight.png) | ![img](assets/screenshots/volume.png) |
 
 | mpris                                | screenshot                                | clipboard                                | Launcher                                | mako                                |
 | ------------------------------------ | ----------------------------------------- | ---------------------------------------- | --------------------------------------- | ----------------------------------- |
-| ![img](assets/screenshots/mpris.png) | ![img](assets/screenshots/screenshot.png) | ![img](assets/screenshots/clipboard.png) | ![img](assets/screenshots/launcher.png) | ![img](assets/screenshots/mako.png) |
+| ![img](assets/screenshots/mpris.png) | ![img](assets/screenshots/screenshot.png) | ![img](assets/screenshots/clipboard.png) | ![img](assets/screenshots/launcher.png) | ![img](assets/screenshots/mako.png) | -->
+
+| Music                                     | Powermenu                                | Quick settings                         | Launcher                                | mako                                |
+| ----------------------------------------- | ---------------------------------------- | -------------------------------------- | --------------------------------------- | ----------------------------------- |
+| ![img](assets/screenshots/with-music.png) | ![img](assets/screenshots/powermenu.png) | ![img](assets/screenshots/with-qs.png) | ![img](assets/screenshots/launcher.png) | ![img](assets/screenshots/mako.png) |
+
+| vscode                                | neovim                                | gtk                                | kitty                                |
+| ------------------------------------- | ------------------------------------- | ---------------------------------- | ------------------------------------ |
+| ![img](assets/screenshots/vscode.png) | ![img](assets/screenshots/neovim.png) | ![img](assets/screenshots/gtk.png) | ![img](assets/screenshots/kitty.png) |
 
 ## Credits
 
