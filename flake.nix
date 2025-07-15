@@ -62,7 +62,12 @@
           ./profiles/home.nix
         ];
         extraSpecialArgs = {
-          inherit inputs username hostname;
+          inherit
+            inputs
+            username
+            hostname
+            system
+            ;
         };
       };
 
