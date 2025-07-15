@@ -53,7 +53,7 @@
       disable_hyprland_logo = false;
       force_default_wallpaper = 0;
       font_family = "JetBrains Mono Nerd Font";
-      animate_manual_resizes = true;
+      # animate_manual_resizes = true;
     };
 
     gestures = {

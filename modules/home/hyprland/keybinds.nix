@@ -97,10 +97,10 @@ let
     "${mod}, up, movefocus, u"
     "${mod}, down, movefocus, d"
 
-    "${mod}, H, resizeactive, -10 0 "
-    "${mod}, J, resizeactive, 0 10 "
-    "${mod}, K, resizeactive, 0 -10 "
-    "${mod}, L, resizeactive, 10 0 "
+    "${mod}, G, resizeactive, -20 0"
+    "${mod}, H, resizeactive, 0 20"
+    "${mod}, J, resizeactive, 0 -20"
+    "${mod}, K, resizeactive, 20 0"
 
     "${mod}, M, togglespecialworkspace, magic"
     "${mod} ${shift}, M, movetoworkspace, special:magic"
@@ -114,7 +114,7 @@ let
     "${mod}, F3, exec, hyprlock"
 
     "${ctrl},escape, exec, eww close-all && echo 0 > /tmp/eww_toggle"
-    ",Print , exec ,grim ~/Pictures/screenshots/screenshot-$(date +%F_%T).png"
+    ",Print , exec ,grim ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
     "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
     "${ctrl}, F12, exec, wf-recorder -f ~/Pictures/Screenshots/Records/recording-$(date +%F_%T).mp4 --size 3840x2160 --pos 0,0"
     "${ctrl}, F11, exec, pkill -INT wf-recorder"
