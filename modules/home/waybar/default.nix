@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   modules = [
@@ -19,9 +24,16 @@ let
     ./modules/backlight.nix
   ];
 
-  widgets = lib.foldl' (acc: modulePath:
-    lib.recursiveUpdate acc (import modulePath { config = config; pkgs = pkgs; lib = lib; })
-  ) {} modules;
+  widgets = lib.foldl' (
+    acc: modulePath:
+    lib.recursiveUpdate acc (
+      import modulePath {
+        config = config;
+        pkgs = pkgs;
+        lib = lib;
+      }
+    )
+  ) { } modules;
 in
 {
   programs.waybar = {
@@ -35,22 +47,22 @@ in
         height = 36;
         reload_style_on_change = true;
         # gtk-layer-shell = true;
-        modules-left = [ 
+        modules-left = [
           "custom/appmenu"
-          "hyprland/window" 
-          # "group/quicklinks"  
+          "hyprland/window"
+          # "group/quicklinks"
         ];
         modules-center = [
-          "hyprland/workspaces" 
+          "hyprland/workspaces"
         ];
-        modules-right = [ 
-          "mpris" 
-          "pulseaudio" 
-          "network" 
+        modules-right = [
+          "mpris"
+          "pulseaudio"
+          "network"
           "backlight"
-          "battery" 
-          # "cpu" 
-          # "memory" 
+          "battery"
+          # "cpu"
+          # "memory"
           "tray"
           "clock"
           "custom/powermenu"
@@ -61,7 +73,7 @@ in
         "cpu" = widgets.cpu;
         "memory" = widgets.memory;
         "hyprland/window" = widgets."hyprland/window";
-        "hyprland/workspaces" = widgets. "hyprland/workspaces";
+        "hyprland/workspaces" = widgets."hyprland/workspaces";
         "mpris" = widgets.mpris;
         "pulseaudio" = widgets.pulseaudio;
         "network" = widgets.network;

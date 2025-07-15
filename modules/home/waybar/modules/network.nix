@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  toggleWigdet = import ./toggle-widget.nix;
+
+  cmd = toggleWigdet.tw "quicksettings";
+in
 {
   network = {
     interval = 5;
@@ -10,7 +15,7 @@
     format-disabled = "󱚼";
     tooltip = true;
 
-    on-click = "~/.config/rofi/scripts/wifi.sh";
+    on-click = cmd;
 
     tooltip-format-wifi = ''
       SSID: {essid}
@@ -31,10 +36,10 @@
 
     format-icons = {
       wifi = [
-        "󰤯"  # 0–25% (no signal)
-        "󰤟"  # 26–50%
-        "󰤢"  # 51–75%
-        "󰤨"  # 76–100% (full)
+        "󰤯" # 0–25% (no signal)
+        "󰤟" # 26–50%
+        "󰤢" # 51–75%
+        "󰤨" # 76–100% (full)
       ];
     };
   };

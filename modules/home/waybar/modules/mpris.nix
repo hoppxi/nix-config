@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  toggleWigdet = import ./toggle-widget.nix;
+
+  cmd = toggleWigdet.tw "music";
+in
 {
   mpris = {
     player = "playerctld";
@@ -20,7 +25,7 @@
       "stopped" = "";
     };
 
-    on-click = "playerctl play-pause";
-    on-click-right = "~/.config/rofi/scripts/music.sh";
+    on-click = cmd;
+    on-click-right = "playerctl play-pause";
   };
 }

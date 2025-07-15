@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  toggleWigdet = import ./toggle-widget.nix;
+
+  cmd = toggleWigdet.tw "quicksettings";
+in
 {
   pulseaudio = {
     scroll-step = 1;
@@ -10,13 +15,13 @@
     format-bluetooth-muted = "{icon} Muted";
     format-source = "{volume}% ";
     format-source-muted = "  Muted";
-    on-click = "~/.config/rofi/scripts/volume.sh";
+    on-click = cmd;
 
     format-icons = {
       default = [
-        ""  # 0–33%
-        ""  # 34–66%
-        ""  # 67–100%
+        "" # 0–33%
+        "" # 34–66%
+        "" # 67–100%
       ];
 
       headphone = "";

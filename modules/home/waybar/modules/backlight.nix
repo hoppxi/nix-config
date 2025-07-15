@@ -1,14 +1,19 @@
 { config, pkgs, ... }:
 
+let
+  toggleWigdet = import ./toggle-widget.nix;
+
+  cmd = toggleWigdet.tw "quicksettings";
+in
 {
   backlight = {
     format = "{icon}";
     format-icons = [
-      "󰃞"  # 0–20%
-      "󰃟"  # 21–40% 
-      "󰃝"  # 41–60%
-      "󰃠"  # 61–80%
-      "󰃚"  # 81–100%
+      "󰃞" # 0–20%
+      "󰃟" # 21–40%
+      "󰃝" # 41–60%
+      "󰃠" # 61–80%
+      "󰃚" # 81–100%
     ];
 
     tooltip = true;
@@ -20,6 +25,6 @@
 
     on-click-middle = "brightnessctl set 100%";
     on-click-right = "brightnessctl set 10%";
-    on-click = "~/.config/rofi/scripts/backlight.sh";
+    on-click = cmd;
   };
 }
