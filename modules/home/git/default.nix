@@ -1,11 +1,11 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.git = {
     enable = true;
 
-    userName  = "hoppxi";
-    userEmail = "hoppxii@gmail.com"; 
+    userName = "hoppxi";
+    userEmail = "hoppxii@gmail.com";
 
     signing = {
       key = null;

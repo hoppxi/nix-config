@@ -6,7 +6,7 @@
 }:
 
 let
-  nvimScript = ../../../scripts/nvim;
+  nvimScript = ./config;
   pluginPkgs = import ./packages.nix { inherit pkgs; };
 in
 {

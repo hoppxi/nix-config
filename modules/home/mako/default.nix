@@ -6,7 +6,7 @@
 
     settings = {
       # General styling
-      background-color = "#1e1e2e88";
+      background-color = "#1e1e2e22";
       border-color = "#89b4fa";
       text-color = "#cdd6f4";
       border-radius = 12;
@@ -36,7 +36,7 @@
         text-color = "#a6adc8";
         default-timeout = 3000;
       };
-      
+
       "urgency=high" = {
         background-color = "#f38ba8cc";
         border-color = "#f38ba8";
