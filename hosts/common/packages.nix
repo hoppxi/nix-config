@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     bash
+    gnupg
 
     # Bluetootj & sound
     pipewire
