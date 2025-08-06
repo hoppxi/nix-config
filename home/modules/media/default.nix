@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./ranger
+    ./mpv.nix
+  ];
+}
