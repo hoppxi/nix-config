@@ -7,8 +7,7 @@
   services.displayManager.sddm.enable = false;
   services.desktopManager.plasma6.enable = false;
 
-  services.getty.autoLogin.enable = true;
-  services.getty.autoLogin.user = "hoppxi";
+  services.getty.autologinUser = "hoppxi";
 
   services.dbus.enable = true;
   services.seatd.enable = true;
