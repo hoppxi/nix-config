@@ -8,6 +8,7 @@
 
     # alacritty
     # neovim
+    lite-xl
 
     # Productivity
     onlyoffice-bin
@@ -24,5 +25,6 @@
     spotify
     pavucontrol
 
+    tofi
   ];
 }

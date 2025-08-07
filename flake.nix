@@ -2,16 +2,27 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+   };
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland = {
+        url = "github:hyprwm/Hyprland";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
-    hyprland-plugins.hyprland.follows = "hyprland";
+    hyprland-plugins = {
+        url = "github:hyprwm/hyprland-plugins";
+        inputs.hyprland.follows = "hyprland";
+    };
+
+    nix-xl = {
+        url = "github:passivelemon/nix-xl";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
