@@ -57,9 +57,11 @@ let
   coreBinds = [
     "${mod}, escape, exec, alacritty"
     "${mod}, C, exec, alacritty"
-    "${mod}, E, exec, ranger"
+    "${mod}, E, exec, alacritty -e ranger"
     "${mod}, N, exec, nvim"
     "${mod}, B, exec, brave"
+    "${mod}, D, exec, tofi-drun --drun-launch=true --terminal=alacritty"
+    "${ctrl}, escape, exec, tofi-drun --drun-launch=true --terminal=alacritty"
 
     "${mod}, T, togglefloating,"
     "${mod}, Q, killactive,"
