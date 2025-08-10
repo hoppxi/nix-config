@@ -40,12 +40,20 @@
     misc = {
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
-      font_family = "JetBrains Mono Nerd Font";
+      font_family = "Inter";
       # animate_manual_resizes = true;
     };
 
     gestures = {
       workspace_swipe = true;
+      workspace_swipe_distance = 700;
+      workspace_swipe_fingers = 3;
+      workspace_swipe_min_fingers = true;
+      workspace_swipe_cancel_ratio = 0.2;
+      workspace_swipe_min_speed_to_force = 5;
+      workspace_swipe_direction_lock = true;
+      workspace_swipe_direction_lock_threshold = 10;
+      workspace_swipe_create_new = true;
     };
   };
 }
