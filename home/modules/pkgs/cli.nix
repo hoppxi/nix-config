@@ -36,5 +36,6 @@
     wf-recorder
 
     udiskie
+    exiftool
   ];
 }

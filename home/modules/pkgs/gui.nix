@@ -8,7 +8,8 @@
 
     # alacritty
     # neovim
-    lite-xl
+    # vscode
+    # lite-xl
 
     # Productivity
     onlyoffice-bin
@@ -18,13 +19,10 @@
     telegram-desktop
     vesktop
 
-    # File
-    ranger
-
     imv
     spotify
     pavucontrol
 
-    tofi
+    fuzzel
   ];
 }
