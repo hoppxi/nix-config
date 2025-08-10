@@ -3,14 +3,21 @@
 {
   programs.hyprland.enable = true;
 
-  services.displayManager.enable = false;
-  services.displayManager.sddm.enable = false;
-  services.desktopManager.plasma6.enable = false;
+  services = {
+    dbus.enable = true;
+    seatd.enable = true;
 
-  services.getty.autologinUser = "hoppxi";
-
-  services.dbus.enable = true;
-  services.seatd.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+      settings = {
+        greeter = {
+          Include = "hoppxi";
+          Exclude = "bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap";
+        };
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     hyprland
