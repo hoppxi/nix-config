@@ -7,7 +7,19 @@
     portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
     ];
+
+    # settings.plugin = {
+    #   overview = {
+
+    #     dragAlpha = 0.7;
+
+    #     panelBorderWidth = 2;
+    #     reservedArea = 0;
+    #     workspaceBorderSize = 2;
+
+    #   };
+    # };
   };
 }
