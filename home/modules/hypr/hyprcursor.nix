@@ -14,4 +14,11 @@
     hyprcursor.size = 32;
   };
 
+  wayland.windowManager.hyprland.settings = {
+    cursor = {
+      zoom_factor = 1;
+      zoom_rigid = false;
+    };
+  };
+
 }
