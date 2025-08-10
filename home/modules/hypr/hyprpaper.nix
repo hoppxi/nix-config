@@ -1,12 +1,14 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 
+let
+  wpSrc = ../../../assets/images/wallpapers;
+  dir = builtins.readDir wpSrc;
+  files = lib.filter (name: dir.${name} == "regular") (builtins.attrNames dir);
+  preloadPaths = map (name: "${config.home.homeDirectory}/.config/backgrounds/${name}") files;
+in
 {
-  home.file.".local/share/pictures/wallpapers-preset" = {
-    source = ../../../assets/images/wallpapers-preset;
+  home.file.".config/backgrounds" = {
+    source = wpSrc;
     recursive = true;
   };
 
@@ -14,13 +16,9 @@
     enable = true;
     settings = {
       ipc = true;
-      preload = [
-        "${config.home.homeDirectory}/.local/share/pictures/wallpapers-preset/wallpaper1.jpg"
-        "${config.home.homeDirectory}/.local/share/pictures/wallpapers-preset/wallpaper2.jpg"
-      ];
+      preload = preloadPaths;
       wallpaper = [
-        "eDP-1,${config.home.homeDirectory}/.local/share/pictures/wallpapers-preset/wallpaper1.jpg"
-        ",${config.home.homeDirectory}/.local/share/pictures/wallpapers-preset/wallpaper2.jpg"
+        "eDP-1,${config.home.homeDirectory}/.config/backgrounds/wallpaper1.jpg"
       ];
       splash = false;
     };
