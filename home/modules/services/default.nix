@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   imports = [
-    ./battery.nix
-    ./network.nix
-    ./bluetooth.nix
+    ./status.nix
   ];
 
   home.file = builtins.listToAttrs (
