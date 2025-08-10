@@ -1,6 +1,6 @@
 {
   imports = [
-    ./ranger
-    ./mpv.nix
+    ./superfile
+    ./mpv
   ];
 }

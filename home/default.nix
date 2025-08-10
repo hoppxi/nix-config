@@ -5,13 +5,12 @@
     ./modules/git
     ./modules/hypr
     ./modules/media
-    ./modules/nvim
+    ./modules/editors
     ./modules/pkgs
     ./modules/services
     ./modules/shell
     ./modules/terminal
     ./modules/theming
-    ./modules/lite-xl
   ];
 
   home = {

@@ -4,9 +4,9 @@
     ./env.nix
     ./exec.nix
     ./hyprcursor.nix
-    ./hypridle.nix
-    ./hyprlock.nix
+    ./hypridle
     ./hyprpaper.nix
+    ./hyprlock.nix
     ./input.nix
     ./keybinds.nix
     ./monitors.nix
@@ -19,4 +19,5 @@
     enable = true;
     xwayland.enable = true;
   };
+
 }
