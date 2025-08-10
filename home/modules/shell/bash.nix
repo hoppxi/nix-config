@@ -25,6 +25,7 @@
       ls = "eza --icons";
       ll = "eza -lah --icons";
       l = "eza -l --icons";
+      spf = "superfile";
     };
 
     initExtra = ''

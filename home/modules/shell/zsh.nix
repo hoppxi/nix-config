@@ -9,8 +9,16 @@
     enable = true;
     enableCompletion = true;
 
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "history"
+        "completion"
+      ];
+    };
     syntaxHighlighting.enable = true;
+    autocd = true;
+    historySubstringSearch.enable = true;
 
     history = {
       ignoreDups = true;
@@ -29,6 +37,7 @@
       ls = "eza --icons";
       ll = "eza -lah --icons";
       l = "eza -l --icons";
+      spf = "superfile";
     };
 
     oh-my-zsh = {
@@ -46,7 +55,6 @@
       # Load Powerlevel10k theme
       source "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
 
-      # Load user configuration if present
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
       # Bind history search
