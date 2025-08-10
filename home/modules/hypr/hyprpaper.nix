@@ -18,7 +18,7 @@ in
       ipc = true;
       preload = preloadPaths;
       wallpaper = [
-        "eDP-1,${config.home.homeDirectory}/.config/backgrounds/wallpaper1.jpg"
+        "eDP-1,${config.home.homeDirectory}/.config/backgrounds/wallpape9.png"
       ];
       splash = false;
     };
