@@ -13,6 +13,7 @@
       "audio"
       "input"
       "bluetooth"
+      "plugdev"
     ];
     shell = pkgs.zsh;
     description = "@hoppxi";

@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-
-  # Nix settings
   nix = {
     package = pkgs.nix;
     settings = {
@@ -17,5 +15,16 @@
   networking.hostName = "ea";
 
   nixpkgs.config.allowUnfree = true;
+
+  # fileSystems."/media/hdd" = {
+  #   device = "/dev/disk/by-uuid/D6D43101D430E601";
+  #   fsType = "ntfs";
+  #   options = [
+  #     "defaults"
+  #     "noatime"
+  #   ];
+  # };
+
+  # Reinstalled
   system.stateVersion = "25.05";
 }

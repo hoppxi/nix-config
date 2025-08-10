@@ -12,6 +12,7 @@
     bluez
     bluez-tools
     blueman
+    udiskie
   ];
 
 }
