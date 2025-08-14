@@ -7,7 +7,8 @@
     dbus.enable = true;
     seatd.enable = true;
 
-    getty.greetingLine = "Welcome to ea!";
+    getty.greetingLine = "Welcome to Nixos @ea!";
+    getty.helpLine = "Enter username and password to login.\nRun nixos-help for Nixos manual";
   };
 
   environment.systemPackages = with pkgs; [
