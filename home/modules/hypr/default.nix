@@ -5,7 +5,7 @@
     ./exec.nix
     ./hyprcursor.nix
     ./hypridle
-    ./hyprpaper.nix
+    ./wallpaper.nix
     ./hyprlock.nix
     ./input.nix
     ./keybinds.nix

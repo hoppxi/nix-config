@@ -3,6 +3,7 @@
 {
   imports = [
     ./status.nix
+    ./udiskie.nix
   ];
 
   home.file = builtins.listToAttrs (

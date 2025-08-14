@@ -11,6 +11,7 @@
     ./modules/shell
     ./modules/terminal
     ./modules/theming
+    ./modules/widgets
   ];
 
   home = {
