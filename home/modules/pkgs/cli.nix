@@ -35,7 +35,6 @@
     slurp
     wf-recorder
 
-    udiskie
     exiftool
   ];
 }
