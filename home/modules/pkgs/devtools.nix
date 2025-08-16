@@ -13,6 +13,10 @@
     alejandra
     direnv
 
+    ## Lua
+    luajit
+    lua-language-server
+
     ## Python
     python3
     pyright
@@ -25,6 +29,11 @@
     ## Go
     go
     gopls
+
+    ## C/C++
+    gcc
+    binutils
+    gnumake
 
     vscode-langservers-extracted
   ];

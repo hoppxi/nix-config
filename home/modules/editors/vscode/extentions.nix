@@ -25,6 +25,7 @@ in
       pkief.material-icon-theme
       # ritwickdey.liveserver
       # eamodio.gitlens
+      sumneko.lua
     ]
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # miguelsolorio-fluent-icons
