@@ -183,7 +183,7 @@ let
     appBinds
     [
       "${ctrl}, escape, exec, fuzzel -T foot"
-      "${mod} ${alt}, E, overview:toggle"
+      # "${mod} ${alt}, E, overview:toggle"
 
       "${mod}, T, togglefloating,"
       "${mod}, Q, killactive,"

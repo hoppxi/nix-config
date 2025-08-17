@@ -12,7 +12,7 @@
     ./monitors.nix
     ./packages.nix
     ./windows.nix
-    ./plugins.nix
+    # ./plugins.nix
   ];
 
   wayland.windowManager.hyprland = {
