@@ -24,21 +24,20 @@ save_state() {
 send_notification() {
   local msg=$1
   local urgency=${2:-normal}
-  notify-send -u "$urgency" "Bluetooth Status" "$msg"
+  local icon=$3
+  notify-send -i "$icon" -u "$urgency" "Bluetooth Status" "$msg"
 }
 
-# ---- Bluetooth Controller Power Status ----
 BT_POWER=$(bluetoothctl show | grep "Powered:" | awk '{print $2}')
 
 if [[ "$BT_POWER" == "yes" && "${LAST[bt-power]}" != "on" ]]; then
-  send_notification "Bluetooth turned ON"
+  send_notification "Bluetooth turned ON" normal ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/bluetooth-online.svg
   update_state "bt-power" "on"
 elif [[ "$BT_POWER" == "no" && "${LAST[bt-power]}" != "off" ]]; then
-  send_notification "Bluetooth turned OFF" critical
+  send_notification "Bluetooth turned OFF" critical ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/bluetooth-offline.svg
   update_state "bt-power" "off"
 fi
 
-# ---- Paired Device Connection Status ----
 while read -r MAC; do
   INFO=$(bluetoothctl info "$MAC")
   NAME=$(echo "$INFO" | grep "Name:" | cut -d ' ' -f2-)
@@ -47,14 +46,14 @@ while read -r MAC; do
   if [[ -n "$CONNECTED" ]]; then
     # Connected
     if [[ "${LAST[bt-$MAC]}" != "connected" ]]; then
-      send_notification "Connected to $NAME ($MAC)"
+      send_notification "Connected to $NAME ($MAC)" ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/bluetooth-paired.svg
       update_state "bt-$MAC" "connected"
     fi
   else
     # Disconnected
     if [[ "${LAST[bt-$MAC]}" == "connected" ]]; then
       send_notification "Disconnected from $NAME ($MAC)" critical
-      update_state "bt-$MAC" "disconnected"
+      update_state "bt-$MAC" "disconnected" ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/bluetooth-offline.svg
     fi
   fi
 done < <(bluetoothctl paired-devices | awk '{print $2}')
