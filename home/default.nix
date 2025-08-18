@@ -12,6 +12,7 @@
     ./modules/terminal
     ./modules/theming
     ./modules/widgets
+    ./modules/dunst
   ];
 
   home = {
