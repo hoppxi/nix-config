@@ -13,6 +13,7 @@
     ./modules/theming
     ./modules/widgets
     ./modules/dunst
+    ./theme/hm-color.nix
   ];
 
   home = {

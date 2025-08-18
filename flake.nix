@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hm-color = {
+      url = "github:hoppxi/hm-color";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hyprland = {
     #   url = "github:hyprwm/Hyprland";
     #   inputs.nixpkgs.follows = "nixpkgs";
