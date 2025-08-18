@@ -1,11 +1,22 @@
+let
+  colors = import ../../theme;
+  c-no-ht = {
+    primary = builtins.substring 1 6 colors.primary;
+    inverse-primary = builtins.substring 1 6 colors.inverse-primary;
+    primary-container = builtins.substring 1 6 colors.primary-container;
+    outline-variant = builtins.substring 1 6 colors.outline-variant;
+    black = builtins.substring 1 6 colors.scrim;
+  };
+in
 {
   wayland.windowManager.hyprland.settings = {
     general = {
-      gaps_in = 5;
-      gaps_out = 7;
+      gaps_in = 2.5;
+      gaps_out = 5;
       border_size = 2;
-      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-      "col.inactive_border" = "rgba(595959aa)";
+      "col.active_border" =
+        "rgba(${c-no-ht.primary}ee) rgba(${c-no-ht.inverse-primary}ee) rgba(${c-no-ht.primary-container}ee) 45deg";
+      "col.inactive_border" = "rgba(${c-no-ht.outline-variant}aa)";
     };
 
     decoration = {
@@ -39,7 +50,7 @@
         range = 30;
         offset = "0 2";
         render_power = 4;
-        color = "rgba(00000010)";
+        color = "rgba(${c-no-ht.black}10)";
       };
     };
   };
