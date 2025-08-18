@@ -7,6 +7,8 @@ BATTERY=$(upower -e | grep BAT | head -n1)
 STATUS=$(upower -i "$BATTERY" | awk '/state:/ { print $2 }')
 PERCENT=$(upower -i "$BATTERY" | awk '/percentage:/ { gsub("%", ""); print $2 }')
 
+ICON_PATH= "~/.nix-profile/share/icons/Papirus-Dark/16x16/panel"
+
 declare -A LAST
 if [[ -f "$STATE_FILE" ]]; then
   while IFS="=" read -r key value; do
@@ -34,16 +36,16 @@ send_notification() {
 
 if [[ "$STATUS" == "discharging" ]]; then
   if [[ "$PERCENT" -le 5 && "${LAST[5]}" != "yes" ]]; then
-    send_notification "Battery critically low (5%)! Plug in now!" critical ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/battery-caution.svg
+    send_notification "Battery critically low (5%)! Plug in now!" critical "$ICON_PATH/battery-caution.svg"
     update_state 5 "yes"
   elif [[ "$PERCENT" -le 10 && "${LAST[10]}" != "yes" ]]; then
-    send_notification -i "Battery low (10%)" critical ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/battery-010.svg
+    send_notification -i "Battery low (10%)" critical "$ICON_PATH/battery-010.svg"
     update_state 10 "yes"
   elif [[ "$PERCENT" -le 15 && "${LAST[15]}" != "yes" ]]; then
-    send_notification -i "Battery getting low (15%)" normal ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/battery-low.svg
+    send_notification -i "Battery getting low (15%)" normal "$ICON_PATH/battery-low.svg"
     update_state 15 "yes"
   elif [[ "$PERCENT" -le 20 && "${LAST[20]}" != "yes" ]]; then
-    send_notification -i "Battery at 20%" low ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/battery-020.svg
+    send_notification -i "Battery at 20%" low "$ICON_PATH/battery-020.svg"
     update_state 20 "yes"
   fi
 
@@ -51,7 +53,7 @@ if [[ "$STATUS" == "discharging" ]]; then
 
 else 
   if [[ "$PERCENT" -ge 100 && "${LAST[100]}" != "yes" ]]; then
-    send_notification -i "Battery fully charged! (100%)" low ~/.nix-profile/share/icons/Papirus-Dark/16x16/panel/battery-full.svg
+    send_notification -i "Battery fully charged! (100%)" low "$ICON_PATH/battery-full.svg"
     update_state 100 "yes"
   fi
 
