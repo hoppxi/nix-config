@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,20 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # hyprspace = {
-    #   url = "github:KZDKM/Hyprspace";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-
-    # nix-xl = {
-    #   url = "github:passivelemon/nix-xl";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -34,7 +23,6 @@
       self,
       nixpkgs,
       home-manager,
-      flake-utils,
       ...
     }@inputs:
     let
@@ -60,7 +48,7 @@
       homeConfigurations."hoppxi@ea" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home ];
-        extraSpecialArgs = { inherit inputs system; };
+        extraSpecialArgs = { inherit inputs; };
       };
 
       packages.${system}.default = pkgs.hello;
