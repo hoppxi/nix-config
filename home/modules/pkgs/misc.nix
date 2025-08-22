@@ -10,6 +10,6 @@
     cava
 
     # Fetch
-    pfetch
+    fastfetch
   ];
 }
