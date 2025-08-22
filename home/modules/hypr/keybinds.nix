@@ -8,6 +8,7 @@ let
   ctrl = "CTRL";
   alt = "ALT";
 
+  # functions
   makeBind =
     modifiers: key: action: target:
     let
@@ -15,58 +16,6 @@ let
     in
     "${mods}, ${key}, ${action}, ${target}";
 
-  # Apps
-  apps = [
-    {
-      key = "escape";
-      cmd = "alacritty";
-    }
-    {
-      key = "C";
-      cmd = "alacritty";
-    }
-    {
-      key = "E";
-      cmd = "alacritty -e superfile";
-    }
-    {
-      key = "Y";
-      cmd = "spotify";
-    }
-    {
-      key = "V";
-      cmd = "code";
-    }
-    {
-      key = "N";
-      cmd = "nvim";
-    }
-    # {
-    #   key = "X";
-    #   cmd = "lite-xl";
-    # }
-    {
-      key = "B";
-      cmd = "brave";
-    }
-    {
-      key = "D";
-      cmd = "fuzzel -T foot";
-    }
-    {
-      key = "L";
-      cmd = "pidof hyprlock || hyprlock";
-    }
-    {
-      key = "F3";
-      cmd = "pidof hyprlock || hyprlock";
-    }
-  ];
-
-  # Map apps to bindings
-  appBinds = map (app: makeBind "" app.key "exec" app.cmd) apps;
-
-  # Workspace bindings generator
   workspaceBinds =
     modifiers: action: offset:
     genList (
@@ -78,126 +27,65 @@ let
       makeBind modifiers key action workspace
     ) 10;
 
-  # Generate workspace
+  bindlExec = key: cmd: "${key}, exec, ${cmd}";
+
+  # Apps
+  apps = import ./apps.nix;
+  appBinds = map (app: makeBind "" app.key "exec" app.cmd) apps;
+
   workspaceBinds1to10 = workspaceBinds "" "workspace" 0;
   workspaceBinds11to20 = workspaceBinds alt "workspace" 10;
   moveToWorkspaceBinds1to10 = workspaceBinds shift "movetoworkspace" 0;
   moveToWorkspaceBinds11to20 = workspaceBinds "${shift} ${alt}" "movetoworkspace" 10;
 
-  # Audio and brightness binds (no mod, just keys with exec)
-  audioBrightnessBinds = [
-    {
-      key = ",XF86AudioRaiseVolume";
-      cmd = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
-    }
-    {
-      key = ",XF86AudioLowerVolume";
-      cmd = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-    }
-    {
-      key = ",XF86AudioMute";
-      cmd = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-    }
-    {
-      key = ",XF86AudioMicMute";
-      cmd = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-    }
-    {
-      key = ",XF86MonBrightnessUp";
-      cmd = "brightnessctl -e4 -n2 set 5%+";
-    }
-    {
-      key = ",XF86MonBrightnessDown";
-      cmd = "brightnessctl -e4 -n2 set 5%-";
-    }
-    {
-      key = ",XF86AudioNext";
-      cmd = "playerctl next";
-    }
-    {
-      key = ",XF86AudioPause";
-      cmd = "playerctl play-pause";
-    }
-    {
-      key = ",XF86AudioPlay";
-      cmd = "playerctl play-pause";
-    }
-    {
-      key = ",XF86AudioPrev";
-      cmd = "playerctl previous";
-    }
+  bindlKeys = [
+    (bindlExec ",XF86AudioRaiseVolume" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")
+    (bindlExec ",XF86AudioLowerVolume" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+    (bindlExec ",XF86AudioMute" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+    (bindlExec ",XF86AudioMicMute" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+    (bindlExec ",XF86MonBrightnessUp" "brightnessctl -e4 -n2 set 5%+")
+    (bindlExec ",XF86MonBrightnessDown" "brightnessctl -e4 -n2 set 5%-")
+    (bindlExec ",XF86AudioNext" "playerctl next")
+    (bindlExec ",XF86AudioPause" "playerctl play-pause")
+    (bindlExec ",XF86AudioPlay" "playerctl play-pause")
+    (bindlExec ",XF86AudioPrev" "playerctl previous")
   ];
 
-  bindlExec = key: cmd: "${key}, exec, ${cmd}";
-  bindlKeys = map (b: bindlExec b.key b.cmd) audioBrightnessBinds;
-
-  # Mouse binds fixed list
   bindmKeys = [
     "${mod}, mouse:272, movewindow"
     "${mod}, mouse:273, resizewindow"
   ];
 
-  # Core binds
-  moveFocusDirs = [
-    {
-      dir = "left";
-      key = "l";
-    }
-    {
-      dir = "right";
-      key = "r";
-    }
-    {
-      dir = "up";
-      key = "u";
-    }
-    {
-      dir = "down";
-      key = "d";
-    }
+  moveFocusBinds = [
+    (makeBind "" "l" "movefocus" "left")
+    (makeBind "" "r" "movefocus" "right")
+    (makeBind "" "u" "movefocus" "up")
+    (makeBind "" "d" "movefocus" "down")
   ];
 
-  resizeKeys = [
-    {
-      key = "G";
-      pos = "-20 0";
-    }
-    {
-      key = "H";
-      pos = "0 20";
-    }
-    {
-      key = "J";
-      pos = "0 -20";
-    }
-    {
-      key = "K";
-      pos = "20 0";
-    }
+  resizeBinds = [
+    (makeBind "" "A" "resizeactive" "-20 0")
+    (makeBind "" "S" "resizeactive" "0 20")
+    (makeBind "" "W" "resizeactive" "0 -20")
+    (makeBind "" "D" "resizeactive" "20 0")
   ];
-
-  moveFocusBinds = map (d: makeBind "" d.dir "movefocus" d.key) moveFocusDirs;
-  resizeBinds = map (r: makeBind "" r.key "resizeactive" r.pos) resizeKeys;
 
   coreBinds = concatLists [
     appBinds
     [
-      "${ctrl}, escape, exec, fuzzel -T foot"
-      # "${mod} ${alt}, E, overview:toggle"
+      (makeBind "" "T" "togglefloating" "")
+      (makeBind "" "Q" "killactive" "")
+      (makeBind "shift" "Q" "exit" "")
+      (makeBind "" "P" "pseudo" "")
+      (makeBind "" "O" "togglesplit" "")
 
-      "${mod}, T, togglefloating,"
-      "${mod}, Q, killactive,"
-      "${mod} ${shift}, Q, exit,"
-      "${mod}, P, pseudo,"
-      "${mod}, O, togglesplit,"
+      (makeBind "" "M" "togglespecialworkspace" "magic")
+      (makeBind "shift" "M" "movetoworkspace" "special:magic")
 
-      "${mod}, M, togglespecialworkspace, magic"
-      "${mod} ${shift}, M, movetoworkspace, special:magic"
-
-      "${mod}, mouse_down, workspace, e+1"
-      "${mod}, mouse_up, workspace, e-1"
-      "${mod}, A, workspace, e+1"
-      "${mod}, S, workspace, e-1"
+      (makeBind "" "mouse_down" "workspace" "e+1")
+      (makeBind "" "mouse_up" "workspace" "e-1")
+      (makeBind "" "G" "workspace" "e-1")
+      (makeBind "" "H" "workspace" "e+1")
 
       ",Print , exec ,grim ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
       "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
