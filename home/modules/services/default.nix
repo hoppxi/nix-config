@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./status.nix
-    ./udiskie.nix
+    ./dunst
+    ./status
+    ./udiskie
   ];
 
   home.file = builtins.listToAttrs (
