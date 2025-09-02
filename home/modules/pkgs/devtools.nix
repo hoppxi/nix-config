@@ -2,20 +2,11 @@
 
 {
   home.packages = with pkgs; [
-
-    # Version Control
-    git
-
     # Nix
     nil
     nixfmt-rfc-style
     nixpkgs-fmt
-    alejandra
     direnv
-
-    ## Lua
-    luajit
-    lua-language-server
 
     ## Python
     python3
