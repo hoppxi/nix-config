@@ -32,10 +32,6 @@ in
         brightness = 1;
         noise = 0.01;
         contrast = 1;
-        popups = true;
-        popups_ignorealpha = 0.6;
-        input_methods = true;
-        input_methods_ignorealpha = 0.8;
       };
 
       active_opacity = 0.9;
