@@ -16,7 +16,7 @@ in
       esbenp.prettier-vscode
       dbaeumer.vscode-eslint
       jnoortheen.nix-ide
-      ms-python.python
+      # ms-python.python
       # rust-lang.rust-analyzer
       # ms-vscode.cpptools
       # ms-vscode.cmake-tools
