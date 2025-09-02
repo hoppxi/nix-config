@@ -11,9 +11,9 @@
     ./modules/shell
     ./modules/terminal
     ./modules/theming
+    ./modules/zen
     ./modules/widgets
-    ./modules/dunst
-    ./theme/hm-color.nix
+    ./theme/recolor.nix
   ];
 
   home = {

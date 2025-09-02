@@ -7,8 +7,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hm-color = {
-      url = "github:hoppxi/hm-color";
+    recolor = {
+      url = "github:hoppxi/recolor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,7 +51,6 @@
         extraSpecialArgs = { inherit inputs; };
       };
 
-      packages.${system}.default = pkgs.hello;
       formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }
