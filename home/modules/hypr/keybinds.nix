@@ -57,10 +57,10 @@ let
   ];
 
   moveFocusBinds = [
-    (makeBind "" "l" "movefocus" "left")
-    (makeBind "" "r" "movefocus" "right")
-    (makeBind "" "u" "movefocus" "up")
-    (makeBind "" "d" "movefocus" "down")
+    (makeBind "" "left" "movefocus" "l")
+    (makeBind "" "right" "movefocus" "r")
+    (makeBind "" "up" "movefocus" "u")
+    (makeBind "" "down" "movefocus" "d")
   ];
 
   resizeBinds = [
@@ -84,8 +84,8 @@ let
 
       (makeBind "" "mouse_down" "workspace" "e+1")
       (makeBind "" "mouse_up" "workspace" "e-1")
-      (makeBind "" "G" "workspace" "e-1")
-      (makeBind "" "H" "workspace" "e+1")
+      (makeBind "" "minus" "workspace" "e-1")
+      (makeBind "" "equal" "workspace" "e+1")
 
       ",Print , exec ,grim ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
       "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
