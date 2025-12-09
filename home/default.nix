@@ -1,24 +1,20 @@
 { config, ... }:
 
+let
+  uname = "hoppxi";
+in
 {
   imports = [
-    ./modules/git
     ./modules/hypr
-    ./modules/media
-    ./modules/editors
-    ./modules/pkgs
+    ./modules/programs
     ./modules/services
     ./modules/shell
-    ./modules/terminal
-    ./modules/theming
-    ./modules/zen
-    ./modules/widgets
-    ./theme/recolor.nix
+    ./modules/theme
   ];
 
   home = {
-    username = "hoppxi";
-    homeDirectory = "/home/hoppxi";
+    username = uname;
+    homeDirectory = "/home/${uname}";
     stateVersion = "25.05";
   };
 

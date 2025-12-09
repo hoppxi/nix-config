@@ -1,17 +1,15 @@
 {
   imports = [
-    ./appearance.nix
-    ./env.nix
-    ./exec.nix
+
     ./hyprcursor.nix
-    ./hypridle
-    ./wallpaper.nix
+    ./hypridle.nix
     ./hyprlock.nix
-    ./input.nix
+    ./hyprsunset.nix
+
+    ./general.nix
     ./keybinds.nix
-    ./monitors.nix
-    ./packages.nix
     ./windows.nix
+    ./appearance.nix
     # ./plugins.nix
   ];
 

@@ -1,19 +1,8 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 
 {
-  programs.bash = {
+  programs.fish = {
     enable = true;
-    enableCompletion = true;
-    historyControl = [
-      "ignoredups"
-      "ignorespace"
-    ];
-    historyFile = "${config.home.homeDirectory}/.bash_history";
-    historySize = 10000;
 
     shellAliases = {
       grep = "grep --color=auto";
@@ -47,14 +36,15 @@
       cpd = "cp -r";
     };
 
-    initExtra = ''
-      # Enable color support
-      export CLICOLOR=1
-      export LS_COLORS="di=34:fi=0:ln=35"
+    # Extra Fish config
+    interactiveShellInit = ''
+      # Fish uses set instead of export
+      set -x CLICOLOR 1
+      set -x LS_COLORS "di=34:fi=0:ln=35"
+
+      # Fish history settings
+      set -U fish_history $HOME/.local/share/fish/fish_history
+      set -U fish_history_limit 10000
     '';
   };
-
-  home.packages = with pkgs; [
-    bash-completion
-  ];
 }

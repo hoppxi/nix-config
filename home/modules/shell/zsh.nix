@@ -37,7 +37,26 @@
       ls = "eza --icons";
       ll = "eza -lah --icons";
       l = "eza -l --icons";
-      spf = "superfile";
+      rg = "rg --hidden";
+      rgi = "rg -i";
+      nde = "nix develop";
+      ndv = "nix develop -c $SHELL";
+      ns = "nix search nixpkgs";
+      df = "df -h";
+      du = "du -h";
+      psg = "ps aux | grep -i";
+      ip = "ip --color=auto";
+      v = "nvim";
+      vi = "nvim";
+      untar = "tar -xvf";
+      tgz = "tar -xvzf";
+      zipf = "zip -r";
+      unzipf = "unzip";
+      md = "mkdir -p";
+      rmf = "rm -rf";
+      cpv = "cp -v";
+      mvv = "mv -v";
+      cpd = "cp -r";
     };
 
     oh-my-zsh = {
@@ -53,9 +72,7 @@
 
     initContent = ''
       # Load Powerlevel10k theme
-      source "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
-
-      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+      eval "$(starship init zsh)"
 
       # Bind history search
       bindkey '^[[A' history-substring-search-up

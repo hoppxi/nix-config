@@ -1,6 +1,6 @@
 let
-  colors = import ../../theme;
-  c-no-ht = {
+  colors = import ../theme/colors.nix;
+  color = {
     primary = builtins.substring 1 6 colors.primary;
     inverse-primary = builtins.substring 1 6 colors.inverse-primary;
     primary-container = builtins.substring 1 6 colors.primary-container;
@@ -13,29 +13,30 @@ in
     general = {
       gaps_in = 2.5;
       gaps_out = 5;
-      border_size = 2;
+      border_size = 1;
       "col.active_border" =
-        "rgba(${c-no-ht.primary}ee) rgba(${c-no-ht.inverse-primary}ee) rgba(${c-no-ht.primary-container}ee) 45deg";
-      "col.inactive_border" = "rgba(${c-no-ht.outline-variant}aa)";
+        "rgba(${color.primary}ee) rgba(${color.inverse-primary}ee) rgba(${color.primary-container}ee) 45deg";
+      "col.inactive_border" = "rgba(${color.outline-variant}aa)";
     };
 
     decoration = {
-      rounding = 10;
+      rounding = 15;
       rounding_power = 2;
       blur = {
         enabled = true;
         xray = true;
         special = false;
         new_optimizations = true;
-        size = 14;
-        passes = 3;
-        brightness = 1;
-        noise = 0.01;
-        contrast = 1;
+        size = 4;
+        passes = 1;
+        brightness = 0.9;
+        noise = 0.05;
+        contrast = 1.1;
+        vibrancy = 0.5;
       };
 
-      active_opacity = 0.9;
-      inactive_opacity = 0.7;
+      active_opacity = 0.95;
+      inactive_opacity = 0.8;
       dim_inactive = true;
       dim_strength = 0.025;
       dim_special = 0.07;
@@ -46,7 +47,7 @@ in
         range = 30;
         offset = "0 2";
         render_power = 4;
-        color = "rgba(${c-no-ht.black}10)";
+        color = "rgba(${color.black}10)";
       };
     };
   };

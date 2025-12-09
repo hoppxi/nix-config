@@ -29,8 +29,50 @@ let
 
   bindlExec = key: cmd: "${key}, exec, ${cmd}";
 
-  # Apps
-  apps = import ./apps.nix;
+  terminal = "alacritty";
+  codeEitor = "zeditor";
+  browser = "brave";
+  fileManager = "nautilus";
+
+  apps = [
+    {
+      key = "C";
+      cmd = terminal;
+    }
+    {
+      key = "X";
+      cmd = codeEitor;
+    }
+    {
+      key = "B";
+      cmd = browser;
+    }
+    {
+      key = "E";
+      cmd = fileManager;
+    }
+    {
+      key = "Z";
+      cmd = "${terminal} -e yazi";
+    }
+    {
+      key = "Y";
+      cmd = "spotify";
+    }
+    {
+      key = "N";
+      cmd = "${terminal} -e nvim";
+    }
+    {
+      key = "space";
+      cmd = "anyrun";
+    }
+    {
+      key = "L";
+      cmd = "pidof hyprlock || hyprlock";
+    }
+  ];
+
   appBinds = map (app: makeBind "" app.key "exec" app.cmd) apps;
 
   workspaceBinds1to10 = workspaceBinds "" "workspace" 0;
@@ -70,6 +112,20 @@ let
     (makeBind "" "D" "resizeactive" "20 0")
   ];
 
+  widgetBinds = [
+    (makeBind "${alt}" "SPACE" "exec" "~/.config/eww/bin/niv-ws open launcher")
+    (makeBind "${alt}" "P" "exec" "~/.config/eww/bin/niv-ws open wlogout")
+    (makeBind "${alt}" "Q" "exec" "~/.config/eww/bin/niv-ws open quick-settings")
+    (makeBind "${alt}" "B" "exec" "~/.config/eww/bin/niv-ws open shelf --stack 2")
+    (makeBind "${alt}" "X" "exec" "~/.config/eww/bin/niv-ws open screenshot-utils")
+    (makeBind "${alt}" "M" "exec" "~/.config/eww/bin/niv-ws open media-control")
+    (makeBind "${alt}" "V" "exec" "~/.config/eww/bin/niv-ws open quick-settings --stack 5")
+    (makeBind "${alt}" "W" "exec" "~/.config/eww/bin/niv-ws open wallpaper")
+    (makeBind "${alt}" "R" "exec" "~/.config/eww/bin/niv restart")
+    (makeBind "${alt}" "C" "exec" "~/.config/eww/bin/niv close")
+    (makeBind "${alt}" "S" "exec" "~/.config/eww/bin/niv start")
+  ];
+
   coreBinds = concatLists [
     appBinds
     [
@@ -94,6 +150,7 @@ let
     ]
     moveFocusBinds
     resizeBinds
+    widgetBinds
   ];
 
 in

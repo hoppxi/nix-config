@@ -3,34 +3,41 @@
     animations = {
       enabled = "yes";
 
-      # bezier = [
-      #   "easeOutQuint, 0.23, 1, 0.32, 1"
-      #   "easeInOutCubic, 0.65, 0.05, 0.36, 1"
-      #   "linear, 0, 0, 1, 1"
-      #   "almostLinear, 0.5,  0.5,  0.75, 1"
-      #   "quick, 0.15, 0, 0.1,  1"
-      # ];
+      bezier = [
+        "expressiveFastSpatial, 0.42, 1.67, 0.21, 0.90"
+        "expressiveSlowSpatial, 0.39, 1.29, 0.35, 0.98"
+        "expressiveDefaultSpatial, 0.38, 1.21, 0.22, 1.00"
+        "emphasizedDecel, 0.05, 0.7, 0.1, 1"
+        "emphasizedAccel, 0.3, 0, 0.8, 0.15"
+        "standardDecel, 0, 0, 0, 1"
+        "menu_decel, 0.1, 1, 0, 1"
+        "menu_accel, 0.52, 0.03, 0.72, 0.08"
+      ];
 
-      # animation = [
-      #   "global, 1,  10, default"
-      #   "border, 1,  5.39,  easeOutQuint"
-      #   "windows, 1,  4.79,  easeOutQuint"
-      #   "windowsIn, 1,  4.1,   easeOutQuint, popin 87%"
-      #   "windowsOut, 1,  1.49,  linear,    popin 87%"
-      #   "fadeIn, 1,  1.73,  almostLinear"
-      #   "fadeOut, 1,  1.46,  almostLinear"
-      #   "fade, 1,  3.03,  quick"
-      #   "layers, 1,  3.81,  easeOutQuint"
-      #   "layersIn, 1,  4,  easeOutQuint, fade"
-      #   "layersOut, 1,  1.5,   linear,    fade"
-      #   "fadeLayersIn, 1,  1.79,  almostLinear"
-      #   "fadeLayersOut, 1,  1.39,  almostLinear"
-      #   "workspaces, 1,  1.94,  almostLinear, fade"
-      #   "workspacesIn, 1,  1.21,  almostLinear, fade"
-      #   "workspacesOut, 1,  1.94,  almostLinear, fade"
-      #   "zoomFactor, 1,  7,  quick"
-      # ];
+      animation = [
+        "windowsIn, 1, 3, emphasizedDecel, popin 80%"
+        "windowsOut, 1, 2, emphasizedDecel, popin 90%"
+        "windowsMove, 1, 3, emphasizedDecel, slide"
+        "border, 1, 10, emphasizedDecel"
+        # layers
+        "layersIn, 1, 2.7, emphasizedDecel, popin 93%"
+        "layersOut, 1, 2.4, menu_accel, popin 94%"
+        # fade
+        "fadeLayersIn, 1, 0.5, menu_decel"
+        "fadeLayersOut, 1, 2.7, menu_accel"
+        # workspaces
+        "workspaces, 1, 7, menu_decel, slide"
+        ## specialWorkspace
+        "specialWorkspaceIn, 1, 2.8, emphasizedDecel, slidevert"
+        "specialWorkspaceOut, 1, 1.2, emphasizedAccel, slidevert"
+      ];
     };
+
+    layerrule = [
+      "blur, widget-*"
+      "ignorezero, widget-*"
+      "abovelock true, widget-lockscreen"
+    ];
 
     dwindle = {
       pseudotile = true;
@@ -41,19 +48,21 @@
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
       font_family = "Inter";
-      # animate_manual_resizes = true;
     };
 
     gestures = {
-      workspace_swipe = true;
       workspace_swipe_distance = 700;
-      workspace_swipe_fingers = 3;
-      workspace_swipe_min_fingers = true;
       workspace_swipe_cancel_ratio = 0.2;
       workspace_swipe_min_speed_to_force = 5;
       workspace_swipe_direction_lock = true;
       workspace_swipe_direction_lock_threshold = 10;
       workspace_swipe_create_new = true;
     };
+
+    gesture = [
+      "3, horizontal, workspace"
+      "3, up, fullscreen"
+      "3, down, close"
+    ];
   };
 }

@@ -1,0 +1,111 @@
+:root {
+  --primary: "#458588";
+  --on-primary: "#fbf1c7";
+  --primary-container: "#3c3836";
+  --on-primary-container: "#ebdbb2";
+  --secondary: "#689d6a";
+  --on-secondary: "#fbf1c7";
+  --secondary-container: "#3c3836";
+  --on-secondary-container: "#d5c4a1";
+  --tertiary: "#b16286";
+  --on-tertiary: "#fbf1c7";
+  --tertiary-container: "#504945";
+  --on-tertiary-container: "#ebdbb2";
+  --error: "#cc241d";
+  --on-error: "#fbf1c7";
+  --error-container: "#7c1f1c";
+  --on-error-container: "#fbf1c7";
+  --background: "#282828";
+  --on-background: "#ebdbb2";
+  --surface: "#282828";
+  --on-surface: "#ebdbb2";
+  --surface-variant: "#3c3836";
+  --on-surface-variant: "#d5c4a1";
+  --outline: "#7c6f64";
+  --outline-variant: "#504945";
+  --shadow: "#000000";
+  --scrim: "#000000";
+  --inverse-surface: "#ebdbb2";
+  --inverse-on-surface: "#282828";
+  --inverse-primary: "#458588";
+  --surface-tint: "#689d6a";
+  --surface-dim: "#1d2021";
+  --surface-bright: "#3c3836";
+
+  --surface-container-lowest: "#1d2021";
+  --surface-container-low: "#282828";
+  --surface-container: "#32302f";
+  --surface-container-high: "#3c3836";
+  --surface-container-highest: "#504945";
+}
+
+* {
+  font-size: 13px;
+  color: var(--on-background);
+  box-shadow: unset;
+}
+
+.control-center {
+  background: unset;
+  border-radius: 1rem;
+}
+
+.widgets > .widget,
+.widget-mpris > carouselindicatordots,
+.widget-mpris > box > button {
+  background-color: alpha(var(--background), 0.95);
+  border-radius: 0.8rem;
+}
+
+.control-center-list-placeholder {
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+  background: var(--surface-container);
+}
+
+.notification-group {
+  border-radius: 0.8rem;
+  padding: unset;
+  background-color: unset;
+  box-shadow: none;
+}
+
+.notification {
+  background-color: var(--surface-container-high);
+  padding: 0.1rem;
+  border: unset;
+}
+
+.notification * {
+  padding: unset;
+}
+
+.notification:hover {
+  background-color: var(--surface-container-highest);
+}
+
+.widget.widget-mpris {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+
+.widget.widget-mpris > carouselindicatordots {
+  --dots-padding: 4px;
+  padding: var(--dots-padding);
+  padding-left: var(--dots-padding);
+  padding-right: calc(6px + var(--dots-padding));
+  margin: 0;
+  margin-top: var(--padding);
+}
+.widget-mpris > box > button:hover {
+  background: rgba(46, 46, 46, 1);
+}
+.widget-mpris-player {
+  box-shadow: none;
+  margin: 0 var(--padding);
+}
+.widget-mpris-player:only-child {
+  margin: 0;
+}

@@ -1,10 +1,16 @@
-{ config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   imports = [
-    ./dunst
+    ./swaync
     ./status
     ./udiskie
+    ./wallpaper
   ];
 
   home.file = builtins.listToAttrs (

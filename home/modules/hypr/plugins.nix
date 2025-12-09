@@ -6,16 +6,16 @@
       inputs.hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
-    # settings.plugin = {
-    #   overview = {
+    settings.plugin = {
+      overview = {
 
-    #     dragAlpha = 0.7;
+        dragAlpha = 0.7;
 
-    #     panelBorderWidth = 2;
-    #     reservedArea = 0;
-    #     workspaceBorderSize = 2;
+        panelBorderWidth = 2;
+        reservedArea = 0;
+        workspaceBorderSize = 2;
 
-    #   };
-    # };
+      };
+    };
   };
 }

@@ -5,7 +5,7 @@ let
     name = path;
     value.source = source;
   };
-  colors = import ../../theme;
+  colors = import ../theme/colors.nix;
 in
 {
   programs.hyprlock = {
@@ -28,13 +28,13 @@ in
 
       background = {
         monitor = "eDP-1";
-        path = "~/.local/share/pictures/lockscreen.jpg";
+        path = "/media/hdd/Backup/fromC/ermiy/OneDrive/Pictures/wallpaper/foggy-road-car-light-desktop-wallpaper.jpg";
         blur_passes = 1;
-        blur_size = 14;
-        contrast = 1.2;
-        brightness = 0.4;
-        vibrancy = 0.3;
-        vibrancy_darkness = 0.3;
+        blur_size = 4;
+        contrast = 1.1;
+        brightness = 0.9;
+        vibrancy = 0.5;
+        vibrancy_darkness = 0.03;
       };
 
       input-field = {
