@@ -9,6 +9,7 @@
     # Bluetootj & sound
     pipewire
     wireplumber
+    pulseaudio
     bluez
     bluez-tools
     blueman

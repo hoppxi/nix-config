@@ -14,6 +14,8 @@
       "input"
       "bluetooth"
       "plugdev"
+      "libvirtd"
+      "kvm"
     ];
     shell = pkgs.zsh;
     description = "@hoppxi";

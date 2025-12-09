@@ -9,14 +9,19 @@
 
     # getty.greetingLine = "Welcome to Nixos @ea!";
     # getty.helpLine = "Enter username and password to login.\nRun nixos-help for Nixos manual";
-    greetd = {
+    # greetd = {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";
+    #       user = "greeter";
+    #     };
+    #   };
+    # };
+    
+    displayManager.gdm = {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";
-          user = "greeter";
-        };
-      };
+      wayland = true;
     };
   };
 
@@ -26,3 +31,4 @@
     xdg-desktop-portal-gtk
   ];
 }
+
