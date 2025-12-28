@@ -17,7 +17,7 @@
       "libvirtd"
       "kvm"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     description = "@hoppxi";
   };
 }

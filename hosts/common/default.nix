@@ -6,7 +6,6 @@
     ./networking.nix
     ./packages.nix
     ./services.nix
-    ./shell.nix
     ./sound.nix
     # ./virtualisation.nix
   ];

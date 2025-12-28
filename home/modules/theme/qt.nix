@@ -20,7 +20,6 @@ in
     "Kvantum/${themeName}".source = "${pkgs.gruvbox-kvantum}/share/Kvantum/${themeName}";
   };
 
-  # Ensure the Kvantum Manager and configuration utilities are installed
   home.packages = with pkgs; [
     kdePackages.qtstyleplugin-kvantum
     libsForQt5.qt5ct

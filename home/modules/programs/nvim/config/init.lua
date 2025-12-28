@@ -1,8 +1,0 @@
-require("plugins")
-require("ui")
-require("lsp")
-require("telescope")
-require("dashboard")
-require("neo-tree")
-require("tabline")
-require("keymaps")

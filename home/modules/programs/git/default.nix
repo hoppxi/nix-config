@@ -10,7 +10,7 @@
 
       extraConfig = {
         core = {
-          editor = "nvim";
+          editor = "hx";
           excludesfile = "~/.gitignore_global";
         };
         color = {
@@ -51,7 +51,7 @@
   };
 
   home.sessionVariables = {
-    GIT_EDITOR = "nvim";
+    GIT_EDITOR = "hx";
     GIT_TERMINAL_PROMPT = "1";
   };
 

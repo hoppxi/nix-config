@@ -1,181 +1,172 @@
+{ config, pkgs, ... }:
+
 {
   programs.starship = {
     enable = true;
 
     settings = {
-      palette = "gruvbox_dark";
+      add_newline = false;
+      format = ''$directory $git_branch $fill $rust$golang$nodejs$dotnet$python$java$c$haskell$ruby$php$lua$elixir$swift$cmd_duration$time$line_break$character'';
 
-      format = "[](color_orange)$os$username[](bg:color_yellow fg:color_orange)$directory[](fg:color_yellow bg:color_aqua)$git_branch$git_status[](fg:color_aqua bg:color_blue)$c$cpp$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:color_blue bg:color_bg3)$docker_context$conda$pixi[](fg:color_bg3 bg:color_bg1)$time[ ](fg:color_bg1)$line_break$character";
-
-      palettes.gruvbox_dark = {
-        color_fg0 = "#fbf1c7";
-        color_bg1 = "#3c3836";
-        color_bg3 = "#665c54";
-        color_blue = "#458588";
-        color_aqua = "#689d6a";
-        color_green = "#98971a";
-        color_orange = "#d65d0e";
-        color_purple = "#b16286";
-        color_red = "#cc241d";
-        color_yellow = "#d79921";
+      character = {
+        success_symbol = "[   ](bold fg:blue)";
+        error_symbol = "[   ](bold fg:red)";
       };
 
-      os = {
-        disabled = false;
-        style = "bg:color_orange fg:color_fg0";
-        symbols = {
-          Windows = "󰍲";
-          Ubuntu = "󰕈";
-          SUSE = "";
-          Raspbian = "󰐿";
-          Mint = "󰣭";
-          Macos = "󰀵";
-          Manjaro = "";
-          Linux = "󰌽";
-          Gentoo = "󰣨";
-          Fedora = "󰣛";
-          Alpine = "";
-          Amazon = "";
-          Android = "";
-          AOSC = "";
-          Arch = "󰣇";
-          Artix = "󰣇";
-          EndeavourOS = "";
-          CentOS = "";
-          Debian = "󰣚";
-          Redhat = "󱄛";
-          RedHatEnterprise = "󱄛";
-          Pop = "";
-
-          NixOS = "";
-        };
-      };
-
-      username = {
-        show_always = true;
-        style_user = "bg:color_orange fg:color_fg0";
-        style_root = "bg:color_orange fg:color_fg0";
-        format = "[ $user ]($style)";
-      };
-
-      directory = {
-        style = "fg:color_fg0 bg:color_yellow";
-        format = "[ $path ]($style)";
-        truncation_length = 3;
-        truncation_symbol = "…/";
-        substitutions = {
-          Documents = "󰈙 ";
-          Downloads = " ";
-          Music = "󰝚 ";
-          Pictures = " ";
-          Developer = "󰲋 ";
-        };
-      };
-
-      git_branch = {
-        symbol = "";
-        style = "bg:color_aqua";
-        format = "[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)";
-      };
-
-      git_status = {
-        style = "bg:color_aqua";
-        format = "[[( $all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)";
-      };
-
-      nodejs = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      c = {
-        symbol = " ";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      cpp = {
-        symbol = " ";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      rust = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      golang = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      php = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      java = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      kotlin = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      haskell = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      python = {
-        symbol = "";
-        style = "bg:color_blue";
-        format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)";
-      };
-
-      docker_context = {
-        symbol = "";
-        style = "bg:color_bg3";
-        format = "[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)";
-      };
-
-      conda = {
-        style = "bg:color_bg3";
-        format = "[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)";
-      };
-
-      pixi = {
-        style = "bg:color_bg3";
-        format = "[[ $symbol( $version)( $environment) ](fg:color_fg0 bg:color_bg3)]($style)";
+      fill = {
+        symbol = " ";
+        style = "fg:current_line";
       };
 
       time = {
         disabled = false;
-        time_format = "%R";
-        style = "bg:color_bg1";
-        format = "[[  $time ](fg:color_fg0 bg:color_bg1)]($style)";
+        format = "[ 󰜥 ](fg:current_line)[](fg:white)[󱑎 $time ](fg:white bg:box)[](fg:white)";
+        time_format = "%T";
       };
 
-      line_break.disabled = false;
+      rust = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[](fg:red bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Rust";
+      };
 
-      character = {
+      golang = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:cyan)[$symbol](fg:primary bg:cyan)[](fg:cyan bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Go";
+      };
+
+      nodejs = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = "󰎙 Node.js";
+      };
+
+      dotnet = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[](fg:purple bg:box)[ $tfm](fg:foreground bg:box)[](fg:box)";
+        symbol = " .NET";
+      };
+
+      python = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[](fg:green bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Python";
+      };
+
+      java = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[](fg:red bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Java";
+      };
+
+      c = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " C";
+      };
+
+      haskell = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[](fg:purple bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Haskell";
+      };
+
+      ruby = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[](fg:red bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Ruby";
+      };
+
+      php = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[](fg:blue bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " PHP";
+      };
+
+      lua = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:cyan)[$symbol](fg:primary bg:cyan)[](fg:cyan bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Lua";
+      };
+
+      elixir = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:purple)[$symbol](fg:primary bg:purple)[](fg:purple bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Elixir";
+      };
+
+      swift = {
+        format = "[ 󰜥 ](fg:current_line)[](fg:orange)[$symbol](fg:primary bg:orange)[](fg:orange bg:box)[ $version](fg:foreground bg:box)[](fg:box)";
+        symbol = " Swift";
+      };
+
+      git_branch = {
+        style = "bg: cyan";
+        symbol = "󰘬";
+        truncation_length = 12;
+        truncation_symbol = "";
+        format = "󰜥 [](bold fg:cyan)[$symbol $branch(:$remote_branch)](fg:black bg:cyan)[ ](bold fg:cyan)";
+      };
+
+      git_commit = {
+        commit_hash_length = 4;
+        tag_symbol = " ";
+      };
+
+      git_state = {
+        format = ''[\($state( $progress_current of $progress_total)\)]($style) '';
+        cherry_pick = "[ PICKING](bold red)";
+      };
+
+      git_status = {
+        conflicted = "  ";
+        ahead = "  ";
+        behind = " ﰸ ";
+        diverged = " ✧ ";
+        untracked = "  ";
+        stashed = "  ";
+        modified = "  ";
+        staged = ''[++\($count\)](green)]'';
+        deleted = "  ";
+      };
+
+      hostname = {
+        ssh_only = false;
+        format = "[•$hostname](bg:cyan bold fg:black)[](bold fg:cyan)";
+        trim_at = ".companyname.com";
         disabled = false;
-        success_symbol = "[](bold fg:color_green)";
-        error_symbol = "[](bold fg:color_red)";
-        vimcmd_symbol = "[](bold fg:color_green)";
-        vimcmd_replace_one_symbol = "[](bold fg:color_purple)";
-        vimcmd_replace_symbol = "[](bold fg:color_purple)";
-        vimcmd_visual_symbol = "[](bold fg:color_yellow)";
+      };
+
+      line_break = {
+        disabled = false;
+      };
+
+      memory_usage = {
+        disabled = true;
+        threshold = -1;
+        symbol = " ";
+        style = "bold dimmed green";
+      };
+
+      username = {
+        style_user = "bold bg:cyan fg:black";
+        style_root = "red bold";
+        format = "[](bold fg:cyan)[$user]($style)";
+        disabled = false;
+        show_always = true;
+      };
+
+      directory = {
+        home_symbol = "  ";
+        read_only = "  ";
+        style = "bg:green fg:black";
+        truncation_length = 6;
+        truncation_symbol = " ••/";
+        format = ''[](bold fg:green)[󰉋 $path]($style)[](bold fg:green)'';
+
+        substitutions = {
+          "Desktop" = "  ";
+          "Documents" = "  ";
+          "Downloads" = "  ";
+          "Music" = " 󰎈 ";
+          "Pictures" = "  ";
+          "Videos" = "  ";
+          "GitHub" = " 󰊤 ";
+        };
+      };
+
+      cmd_duration = {
+        min_time = 0;
+        format = ''[](bold fg:yellow)[󰪢 $duration](bold bg:yellow fg:black)[](bold fg:yellow)'';
       };
     };
   };

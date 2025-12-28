@@ -3,17 +3,14 @@
 {
   environment.systemPackages = with pkgs; [
     bash
-    zsh
+    git
     home-manager
-
-    # Bluetootj & sound
     pipewire
     wireplumber
+    networkmanager
     pulseaudio
     bluez
     bluez-tools
     blueman
-    udiskie
   ];
-
 }

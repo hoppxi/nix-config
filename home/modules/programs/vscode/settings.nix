@@ -27,12 +27,12 @@
 
     "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
     "terminal.integrated.fontSize" = 14;
-    "terminal.integrated.defaultProfile.linux" = "zsh";
+    "terminal.integrated.defaultProfile.linux" = "fish";
     "terminal.integrated.scrollback" = 10000;
 
     "terminal.integrated.profiles.linux" = {
-      "zsh" = {
-        "path" = "zsh";
+      "fish" = {
+        "path" = "fish";
       };
     };
 

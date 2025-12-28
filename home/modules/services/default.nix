@@ -1,7 +1,9 @@
 {
   imports = [
-    ./swaync
     ./udiskie
-    ./wallpaper
+    ./swww
+    ./hyprsunset
+    ./hypridle
+    ./fnott
   ];
 }

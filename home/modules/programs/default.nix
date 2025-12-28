@@ -1,13 +1,13 @@
 {
   imports = [
     ./vscode
-    ./nvim
-    ./zed
+    ./helix
     ./terminals
-    ./anyrun
-    ./ashell
     ./git
     ./xdg
     ./pkgs
+    ./waybar
+    ./hyprlock
+    ./mpv
   ];
 }

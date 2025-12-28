@@ -1,11 +1,9 @@
-{ config, ... }:
-
 let
   uname = "hoppxi";
 in
 {
   imports = [
-    ./modules/hypr
+    ./modules/desktop/hypr
     ./modules/programs
     ./modules/services
     ./modules/shell

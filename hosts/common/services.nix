@@ -5,6 +5,7 @@
     timesyncd.enable = true;
     dbus.enable = true;
     udisks2.enable = true;
+    power-profiles-daemon.enable = true;
 
     openssh = {
       enable = true;

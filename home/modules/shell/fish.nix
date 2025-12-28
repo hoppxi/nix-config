@@ -1,50 +1,93 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 
 {
   programs.fish = {
     enable = true;
 
-    shellAliases = {
-      grep = "grep --color=auto";
+    shellAbbrs = {
       nrs = "sudo nixos-rebuild switch --flake ~/nix-config#ea";
       hms = "home-manager switch --flake ~/nix-config#hoppxi@ea";
       hm = "home-manager";
-      c = "clear";
+      nde = "nix develop";
+      ndv = "nix develop -c $SHELL";
+      ns = "nix search nixpkgs";
+
+      ga = "git add";
+      gaa = "git add --all";
+      gc = "git commit -v";
+      gcm = "git commit -m";
+      gcam = "git commit -a -m";
+      gca = "git commit --amend";
+
+      gco = "git checkout";
+      gcb = "git checkout -b";
+      gb = "git branch";
+      gba = "git branch -a";
+      gbd = "git branch -d";
+
+      gs = "git status";
+      gd = "git diff";
+      gl = "git log --oneline --graph --decorate";
+      gp = "git push";
+      gpf = "git push --force-with-lease";
+      gu = "git pull";
+      gf = "git fetch";
+      grh = "git reset --hard";
+    };
+
+    shellAliases = {
+      grep = "grep --color=auto";
+      ip = "ip --color=auto";
+
       cat = "bat";
       ls = "eza --icons";
       ll = "eza -lah --icons";
       l = "eza -l --icons";
+
+      c = "clear";
       rg = "rg --hidden";
       rgi = "rg -i";
-      nde = "nix develop";
-      ndv = "nix develop -c $SHELL";
-      ns = "nix search nixpkgs";
-      df = "df -h";
-      du = "du -h";
       psg = "ps aux | grep -i";
-      ip = "ip --color=auto";
-      v = "nvim";
-      vi = "nvim";
       untar = "tar -xvf";
       tgz = "tar -xvzf";
-      zipf = "zip -r";
-      unzipf = "unzip";
-      md = "mkdir -p";
       rmf = "rm -rf";
-      cpv = "cp -v";
-      mvv = "mv -v";
-      cpd = "cp -r";
+      md = "mkdir -p";
     };
 
-    # Extra Fish config
     interactiveShellInit = ''
-      # Fish uses set instead of export
-      set -x CLICOLOR 1
-      set -x LS_COLORS "di=34:fi=0:ln=35"
+      set -u FISH_HISTORY  # This unsets the variable if it exists
+      set -g fish_history fish # This forces it to the valid string 'fish'
 
-      # Fish history settings
-      set -U fish_history $HOME/.local/share/fish/fish_history
-      set -U fish_history_limit 10000
+      set -g fish_greeting "" 
+
+      set -gx CLICOLOR 1
+      set -gx EDITOR hx
+
+      set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border"
     '';
+
+    functions = {
+      fcd = ''
+        set -l dir (find . -maxdepth 3 -type d | fzf)
+        if test -n "$dir"
+            cd "$dir"
+        end
+      '';
+
+      __auto_ls_after_cd = {
+        description = "ls after cd";
+        onVariable = "PWD";
+        body = "ls";
+      };
+    };
   };
+
+  home.sessionVariables = {
+    FISH_HISTORY = "fish";
+  };
+
 }

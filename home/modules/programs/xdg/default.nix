@@ -6,11 +6,6 @@ let
   video-player = "vlc.desktop";
 in
 {
-
-  imports = [
-    ./webapps.nix
-  ];
-
   home = {
     packages = with pkgs; [
       xdg-utils

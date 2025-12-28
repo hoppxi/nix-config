@@ -6,7 +6,9 @@
     ./locale.nix
     ./hardware-configuration.nix
     ./users.nix
-    ./hyprland
+    ./shell.nix
+    ./session.nix
+    ./xdg.nix
     ../common
   ];
 }
