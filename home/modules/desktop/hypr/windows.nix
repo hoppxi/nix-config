@@ -33,14 +33,7 @@
       ];
     };
 
-    layerrule = [
-      "blur, waybar"
-      "ignorezero, waybar"
-      "ignorealpha 0.6, waybar"
-      "blur, notifications"
-      "ignorezero, notifications"
-      "ignorealpha 0.6, notifications"
-    ];
+    layerrule = [ ];
 
     dwindle = {
       pseudotile = true;

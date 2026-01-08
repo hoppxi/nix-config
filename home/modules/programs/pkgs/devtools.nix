@@ -1,15 +1,16 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     nil
-    nixfmt-rfc-style
+    nixfmt
     nixpkgs-fmt
     direnv
 
     python3
     pyright
     python313Packages.pip
+    ruff
 
     nodejs_24
     nodePackages.typescript
@@ -20,11 +21,14 @@
     gotools
 
     gcc
+    clang-tools
     binutils
     gnumake
     cmake
     pkg-config
 
     vscode-langservers-extracted
+    shfmt
+    taplo
   ];
 }

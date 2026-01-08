@@ -10,7 +10,7 @@ in
 
     settings = {
       main = {
-        shell = "${pkgs.zsh}/bin/zsh";
+        shell = "${pkgs.fish}/bin/fish";
         login-shell = "yes";
         term = "foot";
         font = "JetBrainsMono Nerd Font:size=9";

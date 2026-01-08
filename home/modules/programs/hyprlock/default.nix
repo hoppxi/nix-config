@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 let
   file' = path: source: {
     name = path;
@@ -28,7 +26,7 @@ in
 
       background = {
         monitor = "eDP-1";
-        path = "/media/hdd/Backup/fromC/ermiy/OneDrive/Pictures/wallpaper/foggy-road-car-light-desktop-wallpaper.jpg";
+        path = "~/.local/share/pictures/lockscreen.jpg";
         blur_passes = 1;
         blur_size = 4;
         contrast = 1.1;

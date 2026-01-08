@@ -12,7 +12,7 @@
       "ignoredups"
       "ignorespace"
     ];
-    historyFile = "${config.home.homeDirectory}/.bash_history";
+    historyFile = "${config.home.homeDirectory}/.config/bash/.bash_history";
     historySize = 10000;
 
     shellAliases = {
@@ -48,7 +48,6 @@
     };
 
     initExtra = ''
-      # Enable color support
       export CLICOLOR=1
       export LS_COLORS="di=34:fi=0:ln=35"
     '';

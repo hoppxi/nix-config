@@ -1,8 +1,7 @@
 {
   imports = [
     ./udiskie
-    ./swww
-    ./hyprsunset
+    ./waul
     ./hypridle
     ./fnott
   ];

@@ -41,6 +41,7 @@ in
       low = {
         background = toFnottHex colors.surface-container-low "60";
         border-color = toFnottHex colors.outline "ff";
+        default-timeout = 5;
       };
 
       critical = {

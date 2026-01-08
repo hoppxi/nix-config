@@ -9,20 +9,22 @@
 
       editor = {
         line-number = "relative";
-        mouse = true;
-        auto-save = true;
-        auto-format = true;
-        idle-timeout = 50;
-        completion-trigger-len = 2;
         cursorline = true;
+        scrolloff = 10;
+        mouse = true;
+        middle-click-paste = true;
+        bufferline = "multiple"; # Show tabs for open buffers
         color-modes = true;
 
-        bufferline = "multiple";
-        indent-guides.render = true;
+        indent-guides = {
+          render = true;
+          character = "▏";
+          skip-levels = 1;
+        };
 
         cursor-shape = {
-          insert = "bar";
           normal = "block";
+          insert = "bar";
           select = "underline";
         };
 
@@ -33,17 +35,6 @@
       };
 
       keys.normal = {
-        "space" = {
-          "f" = "file_picker";
-          "F" = "file_picker_in_current_directory";
-          "b" = "buffer_picker";
-          "s" = "symbol_picker";
-          "S" = "workspace_symbol_picker";
-          "r" = "rename_symbol";
-          "a" = "code_action";
-          "?" = "command_palette";
-        };
-
         "C-d" = [
           "select_all"
           "keep_primary_selection"
@@ -115,7 +106,7 @@
             {
               name = "nix";
               formatter = {
-                command = lib.getExe pkgs.nixfmt-rfc-style;
+                command = lib.getExe pkgs.nixfmt;
               };
             }
             // standard
@@ -133,21 +124,179 @@
             }
             // standard
           )
-          ({ name = "bash"; } // standard)
-          ({ name = "c"; } // standard)
-          ({ name = "cpp"; } // standard)
-          ({ name = "rust"; } // standard)
-          ({ name = "python"; } // standard)
-          ({ name = "javascript"; } // standard)
-          ({ name = "typescript"; } // standard)
-          ({ name = "jsx"; } // standard)
-          ({ name = "tsx"; } // standard)
-          ({ name = "html"; } // standard)
-          ({ name = "css"; } // standard)
-          ({ name = "json"; } // standard)
-          ({ name = "yaml"; } // standard)
-          ({ name = "toml"; } // standard)
-          ({ name = "markdown"; } // standard)
+          (
+            {
+              name = "c";
+              language-servers = [ "clangd" ];
+              formatter.command = "clang-format";
+            }
+            // standard
+          )
+          (
+            {
+              name = "cpp";
+              language-servers = [ "clangd" ];
+              formatter.command = "clang-format";
+            }
+            // standard
+          )
+
+          (
+            {
+              name = "rust";
+            }
+            // standard
+          )
+
+          (
+            {
+              name = "python";
+              language-servers = [
+                "ruff"
+                "pyright"
+              ];
+              formatter.command = "ruff";
+              formatter.args = [
+                "format"
+                "-"
+              ];
+            }
+            // standard
+          )
+
+          (
+            {
+              name = "javascript";
+              language-servers = [ "typescript-language-server" ];
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "typescript"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "typescript";
+              language-servers = [ "typescript-language-server" ];
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "typescript"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "jsx";
+              language-servers = [ "typescript-language-server" ];
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "typescript"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "tsx";
+              language-servers = [ "typescript-language-server" ];
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "typescript"
+              ];
+            }
+            // standard
+          )
+
+          (
+            {
+              name = "bash";
+              formatter.command = "shfmt";
+              formatter.args = [
+                "-i"
+                "2"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "html";
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "html"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "css";
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "css"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "json";
+              formatter.command = "fixjson";
+            }
+            // standard
+          )
+          (
+            {
+              name = "yaml";
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "yaml"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "toml";
+              formatter.command = "taplo";
+              formatter.args = [
+                "fmt"
+                "-"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "markdown";
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "markdown"
+              ];
+            }
+            // standard
+          )
+          (
+            {
+              name = "ini";
+              formatter.command = "prettier";
+              formatter.args = [
+                "--parser"
+                "ini"
+              ];
+            }
+            // standard
+          )
         ];
     };
 

@@ -1,13 +1,13 @@
 {
   imports = [
-    ./vscode
     ./helix
-    ./terminals
+    ./zeditor
+    ./foot
     ./git
     ./xdg
     ./pkgs
-    ./waybar
     ./hyprlock
-    ./mpv
+    ./mbar
+    ./lawnch
   ];
 }

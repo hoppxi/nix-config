@@ -36,7 +36,7 @@ in
       };
 
       active_opacity = 0.95;
-      inactive_opacity = 0.8;
+      inactive_opacity = 0.9;
       dim_inactive = true;
       dim_strength = 0.025;
       dim_special = 0.07;

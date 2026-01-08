@@ -18,8 +18,6 @@
     };
 
     exec-once = [
-      "waybar"
-      "hypridle"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
     ];
@@ -31,7 +29,7 @@
       "WLR_NO_HARDWARE_CURSORS,1"
       "NIXOS_OZONE_WL,1"
       "EDITOR,hx"
-      "TERMINAL,alacritty"
+      "TERMINAL,foot"
       "BROWSER,brave"
       "QT_QPA_PLATFORMTHEME,kvantum"
       "QT_STYLE_OVERRIDE,kvantum"

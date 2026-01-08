@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let
   browser = "brave-browser.desktop";
-  file-manager = "org.gnome.Nautilus.desktop";
-  image-viewer = "org.gnome.gThumb.desktop";
-  video-player = "vlc.desktop";
+  file-manager = "yazi.desktop";
+  image-viewer = "imv.desktop";
+  video-player = "mpv.desktop";
 in
 {
   home = {

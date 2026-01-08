@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  themeName = "Gruvbox-Dark-Medium";
+  themeName = "Gruvbox-Dark-Brown";
 in
 {
 
@@ -21,6 +21,7 @@ in
   };
 
   home.packages = with pkgs; [
+    gruvbox-kvantum
     kdePackages.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     kdePackages.qt6ct

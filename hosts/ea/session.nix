@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   programs.hyprland.enable = true;
@@ -8,18 +8,13 @@
     dbus.enable = true;
     seatd.enable = true;
 
-    getty.greetingLine = "Welcome to Nixos @ea!";
-    getty.helpLine = "Enter username and password to login.";
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.hyprland}/bin/Hyprland";
-          user = "greeter";
-        };
-      };
-    };
-
+    getty.greetingLine = "Welcome @ea!";
+    getty.helpLine = "";
   };
 
+  environment.loginShellInit = ''
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      exec ${pkgs.hyprland}/bin/start-hyprland
+    fi
+  '';
 }

@@ -9,14 +9,14 @@ let
   alt = "ALT";
 
   # functions
-  makeBind =
+  make-bind =
     modifiers: key: action: target:
     let
       mods = if modifiers == "" then mod else "${mod} ${modifiers}";
     in
     "${mods}, ${key}, ${action}, ${target}";
 
-  workspaceBinds =
+  workspace-binds =
     modifiers: action: offset:
     genList (
       i:
@@ -24,15 +24,15 @@ let
         key = toString (if i == 9 then 0 else i + 1);
         workspace = toString (i + 1 + offset);
       in
-      makeBind modifiers key action workspace
+      make-bind modifiers key action workspace
     ) 10;
 
-  bindlExec = key: cmd: "${key}, exec, ${cmd}";
+  bindl-exec = key: cmd: "${key}, exec, ${cmd}";
 
-  terminal = "alacritty";
-  codeEitor = "hx";
+  terminal = "foot";
+  code-editor = "hx";
   browser = "brave";
-  fileManager = "nautilus";
+  file-manager = "yazi";
 
   apps = [
     {
@@ -41,7 +41,7 @@ let
     }
     {
       key = "X";
-      cmd = "${terminal} -e ${codeEitor}";
+      cmd = "${terminal} -e ${code-editor}";
     }
     {
       key = "B";
@@ -49,102 +49,98 @@ let
     }
     {
       key = "E";
-      cmd = fileManager;
-    }
-    {
-      key = "Z";
-      cmd = "${terminal} -e yazi";
+      cmd = "${terminal} -e ${file-manager}";
     }
     {
       key = "Y";
       cmd = "spotify";
     }
     {
-      key = "V";
-      cmd = "code";
+      key = "L";
+      cmd = "hyprlock";
     }
     {
-      key = "L";
-      cmd = "pidof hyprlock || hyprlock";
+      key = "space";
+      cmd = "lawnch";
     }
   ];
 
-  appBinds = map (app: makeBind "" app.key "exec" app.cmd) apps;
+  app-binds = map (app: make-bind "" app.key "exec" app.cmd) apps;
 
-  workspaceBinds1to10 = workspaceBinds "" "workspace" 0;
-  workspaceBinds11to20 = workspaceBinds alt "workspace" 10;
-  moveToWorkspaceBinds1to10 = workspaceBinds shift "movetoworkspace" 0;
-  moveToWorkspaceBinds11to20 = workspaceBinds "${shift} ${alt}" "movetoworkspace" 10;
+  workspace-binds-1to10 = workspace-binds "" "workspace" 0;
+  workspace-binds-11to20 = workspace-binds alt "workspace" 10;
+  move-to-workspace-binds-1to10 = workspace-binds shift "movetoworkspace" 0;
+  move-to-workspace-binds-11to20 = workspace-binds "${shift} ${alt}" "movetoworkspace" 10;
 
-  bindlKeys = [
-    (bindlExec ",XF86AudioRaiseVolume" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")
-    (bindlExec ",XF86AudioLowerVolume" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
-    (bindlExec ",XF86AudioMute" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
-    (bindlExec ",XF86AudioMicMute" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
-    (bindlExec ",XF86MonBrightnessUp" "brightnessctl -e4 -n2 set 5%+")
-    (bindlExec ",XF86MonBrightnessDown" "brightnessctl -e4 -n2 set 5%-")
-    (bindlExec ",XF86AudioNext" "playerctl next")
-    (bindlExec ",XF86AudioPause" "playerctl play-pause")
-    (bindlExec ",XF86AudioPlay" "playerctl play-pause")
-    (bindlExec ",XF86AudioPrev" "playerctl previous")
+  bindl-keys = [
+    (bindl-exec ",XF86AudioRaiseVolume" "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")
+    (bindl-exec ",XF86AudioLowerVolume" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+    (bindl-exec ",XF86AudioMute" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+    (bindl-exec ",XF86AudioMicMute" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+    (bindl-exec ",XF86MonBrightnessUp" "brightnessctl -e4 -n2 set 5%+")
+    (bindl-exec ",XF86MonBrightnessDown" "brightnessctl -e4 -n2 set 5%-")
+    (bindl-exec ",XF86AudioNext" "playerctl next")
+    (bindl-exec ",XF86AudioPause" "playerctl play-pause")
+    (bindl-exec ",XF86AudioPlay" "playerctl play-pause")
+    (bindl-exec ",XF86AudioPrev" "playerctl previous")
   ];
 
-  bindmKeys = [
+  bindm-keys = [
     "${mod}, mouse:272, movewindow"
     "${mod}, mouse:273, resizewindow"
   ];
 
-  moveFocusBinds = [
-    (makeBind "" "left" "movefocus" "l")
-    (makeBind "" "right" "movefocus" "r")
-    (makeBind "" "up" "movefocus" "u")
-    (makeBind "" "down" "movefocus" "d")
+  move-focus-binds = [
+    (make-bind "" "left" "movefocus" "l")
+    (make-bind "" "right" "movefocus" "r")
+    (make-bind "" "up" "movefocus" "u")
+    (make-bind "" "down" "movefocus" "d")
   ];
 
-  resizeBinds = [
-    (makeBind "" "A" "resizeactive" "-20 0")
-    (makeBind "" "S" "resizeactive" "0 20")
-    (makeBind "" "W" "resizeactive" "0 -20")
-    (makeBind "" "D" "resizeactive" "20 0")
+  resize-binds = [
+    (make-bind "" "A" "resizeactive" "-20 0")
+    (make-bind "" "S" "resizeactive" "0 20")
+    (make-bind "" "W" "resizeactive" "0 -20")
+    (make-bind "" "D" "resizeactive" "20 0")
   ];
 
-  coreBinds = concatLists [
-    appBinds
+  core-binds = concatLists [
+    app-binds
     [
-      (makeBind "" "T" "togglefloating" "")
-      (makeBind "" "Q" "killactive" "")
-      (makeBind "shift" "Q" "exit" "")
-      (makeBind "" "P" "pseudo" "")
-      (makeBind "" "O" "togglesplit" "")
+      (make-bind "" "T" "togglefloating" "")
+      (make-bind "" "Q" "killactive" "")
+      (make-bind "shift" "Q" "exit" "")
+      (make-bind "" "P" "pseudo" "")
+      (make-bind "" "O" "togglesplit" "")
 
-      (makeBind "" "M" "togglespecialworkspace" "magic")
-      (makeBind "shift" "M" "movetoworkspace" "special:magic")
+      (make-bind "" "M" "togglespecialworkspace" "magic")
+      (make-bind "shift" "M" "movetoworkspace" "special:magic")
 
-      (makeBind "" "mouse_down" "workspace" "e+1")
-      (makeBind "" "mouse_up" "workspace" "e-1")
-      (makeBind "" "minus" "workspace" "e-1")
-      (makeBind "" "equal" "workspace" "e+1")
+      (make-bind "" "mouse_down" "workspace" "e+1")
+      (make-bind "" "mouse_up" "workspace" "e-1")
+      (make-bind "" "minus" "workspace" "e-1")
+      (make-bind "" "equal" "workspace" "e+1")
 
       ",Print , exec ,grim ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
       "${ctrl}, Print, exec, grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%F_%T).png"
       "${ctrl}, F12, exec, wf-recorder -f ~/Pictures/Screenshots/Records/recording-$(date +%F_%T).mp4 --size 3840x2160 --pos 0,0"
       "${ctrl}, F11, exec, pkill -INT wf-recorder"
     ]
-    moveFocusBinds
-    resizeBinds
+    move-focus-binds
+    resize-binds
   ];
 
 in
 {
   wayland.windowManager.hyprland.settings = {
     bind =
-      coreBinds
-      ++ workspaceBinds1to10
-      ++ workspaceBinds11to20
-      ++ moveToWorkspaceBinds1to10
-      ++ moveToWorkspaceBinds11to20;
+      core-binds
+      ++ workspace-binds-1to10
+      ++ workspace-binds-11to20
+      ++ move-to-workspace-binds-1to10
+      ++ move-to-workspace-binds-11to20;
 
-    bindl = bindlKeys;
-    bindm = bindmKeys;
+    bindl = bindl-keys;
+    bindm = bindm-keys;
   };
 }
