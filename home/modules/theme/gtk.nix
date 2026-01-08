@@ -21,8 +21,8 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Hyprland-Cursor";
-      package = pkgs.hyprcursor;
+      name = "rose-pine-hyprcursor";
+      package = pkgs.rose-pine-hyprcursor;
     };
     font = {
       name = "Inter";
