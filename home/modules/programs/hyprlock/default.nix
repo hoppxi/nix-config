@@ -26,7 +26,7 @@ in
 
       background = {
         monitor = "eDP-1";
-        path = "~/.local/share/pictures/lockscreen.jpg";
+        path = "~/.cache/waul/current_wall";
         blur_passes = 1;
         blur_size = 4;
         contrast = 1.1;
@@ -99,7 +99,6 @@ in
   };
 
   home.file = builtins.listToAttrs [
-    (file' ".local/share/pictures/lockscreen.jpg" ../../../../assets/images/lockscreen.jpg)
     (file' ".local/share/pictures/lock.png" ../../../../assets/images/icons/lock.png)
     (file' ".local/share/pictures/nixos.png" ../../../../assets/images/icons/nixos.png)
   ];
