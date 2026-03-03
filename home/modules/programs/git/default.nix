@@ -5,7 +5,7 @@
     settings = {
       user = {
         name = "hoppxi";
-        email = "hoppxii@gmail.com";
+        email = "152753390+hoppxi@users.noreply.github.com";
       };
 
       extraConfig = {
